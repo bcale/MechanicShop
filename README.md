@@ -1,7 +1,7 @@
 # MechanicShop
 
 ## Database Structure 
-- DB Name: MechanicShop
+##### DB Name: MechanicShop
   
 | customers                 | vehicles               | service_history               | technicians                | services                     | technician_rank          |
 | ----------- | ----------- | ----------- | ----------- | ----------- | -----------  |
@@ -16,5 +16,7 @@
 | customer_zip int          |                        |                               |
 | customer_email char(50)   |                        |                               |
 
+##### Flow Chart
+![alt text](https://github.com/bcale/MechanicShop/blob/master/DBDesignFlowchart.png?raw=true)
 
 ### Visual Studio
