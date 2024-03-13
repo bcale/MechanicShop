@@ -1,3 +1,7 @@
 # MechanicShop
 # Naming Conventions
-### Database Name: MechanicShop
+### Database
+- DB Name: MechanicShop
+- Tables:
+
+### Visual Studio
