@@ -12,7 +12,7 @@
 | customer_city char(50)    | vehicle_license_plate char(7)  | technician_id FK      |                            | technician_rank_id FK
 | customer_street char(50)  | vehicle_color char(50) | service_record_date char(10)  |
 | customer_apartment_number | vehicle_vin char(50)   | service_record_time int       |
-| customer_state char(2)    | vehicle_make char(50)  | service_record_status boolean |
+| customer_state char(2)    | vehicle_make char(50)  | service_record_status bit     |
 | customer_zip int          |                        |                               |
 | customer_email char(50)   |                        |                               |
 
