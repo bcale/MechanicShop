@@ -44,12 +44,11 @@ CREATE TABLE services
 (service_id INT NOT NULL,
 service_name NVARCHAR(50) NOT NULL,
 service_description NVARCHAR(100) NOT NULL,
--- is FLOAT RIGHT?
 service_cost FLOAT NOT NULL,
 service_rank_requirement NVARCHAR(50) NOT NULL,
---ARE THESE CONSTRAINTS RIGHT? YES
 CONSTRAINT pk_services PRIMARY KEY (service_id)
 )
+
 CREATE TABLE technician_rank
 (technician_rank_id int NOT NULL,
 technician_rank NVARCHAR(10) NOT NULL,
