@@ -1,7 +1,7 @@
 Use MechanicShop
 
 CREATE TABLE customers
-(customer_id NVARCHAR(50) NOT NULL,
+(customer_id INT NOT NULL,
 custome_Lname NVARCHAR(50) NOT NULL,
 customer_phone INT NOT NULL,
 customer_city NVARCHAR(50) NOT NULL,
@@ -35,7 +35,7 @@ service_id INT NOT NULL FOREIGN KEY REFERENCES services(service_id),
 technician_id INT NOT NULL FOREIGN KEY REFERENCES technicians(technician_id),
 service_record_date NVARCHAR(10) NOT NULL,
 service_record_time INT NOT NULL,
-service_record_status BOOLEAN NOT NULL,
+service_record_status bit NOT NULL,
 CONSTRAINT pk_service_history PRIMARY KEY (service_record_id)
 );
 
