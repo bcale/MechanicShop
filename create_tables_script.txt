@@ -2,7 +2,7 @@ Use MechanicShop
 
 CREATE TABLE customers
 (customer_id INT NOT NULL,
-custome_Lname NVARCHAR(50) NOT NULL,
+customer_Lname NVARCHAR(50) NOT NULL,
 customer_phone INT NOT NULL,
 customer_city NVARCHAR(50) NOT NULL,
 customer_street NVARCHAR(50) NOT NULL,
@@ -29,7 +29,7 @@ CONSTRAINT pk_vehicles PRIMARY KEY (vehicle_id),
 
 CREATE TABLE service_history
 (service_record_id INT NOT NULL,
-cutomer_id INT NOT NULL FOREIGN KEY REFERENCES customers(customer_id),
+customer_id INT NOT NULL FOREIGN KEY REFERENCES customers(customer_id),
 vehicle_id INT NOT NULL FOREIGN KEY REFERENCES vehicles(vehicle_id),
 service_id INT NOT NULL FOREIGN KEY REFERENCES services(service_id),
 technician_id INT NOT NULL FOREIGN KEY REFERENCES technicians(technician_id),
