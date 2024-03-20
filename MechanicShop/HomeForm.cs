@@ -53,7 +53,7 @@ namespace MechanicShop
         private void btn_AddCustomer_Click(object sender, EventArgs e)
         {
             // Create an instance of the form 
-            AddCustomer addCustomerForm = new AddCustomer();
+            AddCustomerForm addCustomerForm = new AddCustomerForm();
             addCustomerForm.ShowDialog();
 
         }

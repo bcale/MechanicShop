@@ -1,6 +1,6 @@
 ﻿namespace MechanicShop
 {
-    partial class AddCustomer
+    partial class AddCustomerForm
     {
         /// <summary>
         /// Required designer variable.

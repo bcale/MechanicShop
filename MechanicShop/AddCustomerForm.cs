@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace MechanicShop
 {
-    public partial class AddCustomer : Form
+    public partial class AddCustomerForm : Form
     {
         public class Customer
         {
@@ -25,7 +25,7 @@ namespace MechanicShop
             public string Email { get; set; } = string.Empty;
         }
 
-        public AddCustomer()
+        public AddCustomerForm()
         {
             InitializeComponent();
         }
