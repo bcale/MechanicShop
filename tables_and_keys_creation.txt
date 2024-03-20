@@ -2,6 +2,7 @@ USE MechanicShop;
 
 CREATE TABLE customers (
     customer_id INT NOT NULL,
+    customer_Fname NVARCHAR(50) NOT NULL,
     customer_Lname NVARCHAR(50) NOT NULL,
     customer_phone INT NOT NULL,
     customer_city NVARCHAR(50) NOT NULL,
