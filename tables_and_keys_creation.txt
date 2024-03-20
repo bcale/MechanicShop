@@ -7,7 +7,7 @@ CREATE TABLE customers (
     customer_phone INT NOT NULL,
     customer_city NVARCHAR(50) NOT NULL,
     customer_street NVARCHAR(50) NOT NULL,
-    customer_apartment_number INT NOT NULL,
+    customer_apartment_number INT,
     customer_state NVARCHAR(2) NOT NULL,
     customer_zip INT NOT NULL,
     customer_email NVARCHAR(50) NOT NULL, 
