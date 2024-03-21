@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace MechanicShop
 {
-    public partial class AddCustomerForm : Form
+    public partial class NewCustomerForm : Form
     {
         private readonly SqlConnection connection;
 
@@ -28,7 +28,7 @@ namespace MechanicShop
             public string Email { get; set; } = string.Empty;
         }
 
-        public AddCustomerForm()
+        public NewCustomerForm()
         {
             InitializeComponent();
             connection = DatabaseManager.GetConnection();

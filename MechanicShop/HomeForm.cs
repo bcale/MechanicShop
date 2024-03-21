@@ -24,11 +24,23 @@ namespace MechanicShop
 
         }
 
-        private void btn_AddCustomer_Click(object sender, EventArgs e)
+        private void btn_NewCustomer_Click(object sender, EventArgs e)
         {
             // Create an instance of the form 
-            AddCustomerForm addCustomerForm = new AddCustomerForm();
+            NewCustomerForm addCustomerForm = new NewCustomerForm();
             addCustomerForm.ShowDialog();
+        }
+
+        private void btn_NewVehicle_Click(object sender, EventArgs e)
+        {
+            // Create an instance of the form 
+            NewVehicleForm addVehicleForm = new NewVehicleForm();
+            addVehicleForm.ShowDialog();
+        }
+
+        private void btn_Management_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
