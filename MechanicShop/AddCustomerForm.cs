@@ -13,7 +13,7 @@ namespace MechanicShop
 {
     public partial class AddCustomerForm : Form
     {
-        readonly SqlConnection connection = DatabaseManager.GetConnection();
+        private readonly SqlConnection connection;
 
         public class Customer
         {
@@ -31,6 +31,7 @@ namespace MechanicShop
         public AddCustomerForm()
         {
             InitializeComponent();
+            connection = DatabaseManager.GetConnection();
         }
 
         private void AddCustomer_Load(object sender, EventArgs e)
@@ -53,8 +54,6 @@ namespace MechanicShop
                 Zip = txt_customerZip.Text,
                 Email = txt_customerEmail.Text
             };
-
-            // TODO: Insert into DB
 
             // Have user confirm before saving
             DialogResult result = MessageBox.Show("Insert Customer into Database?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -89,9 +88,10 @@ namespace MechanicShop
                 command.Parameters.Add(p_Zip);
                 command.Parameters.Add(p_Email);
 
+
                 // EXEC the procedure
                 command.ExecuteNonQuery();
-
+                this.Close();
             }
 
             // REFERENCE: https://www.mssqltips.com/sqlservertip/5810/working-with-sql-server-stored-procedures-and-net/
@@ -106,6 +106,11 @@ namespace MechanicShop
             {
                 this.Close();
             }
+        }
+
+        private void lbl_customerPhone_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
