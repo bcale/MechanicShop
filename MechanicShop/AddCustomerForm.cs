@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,8 @@ namespace MechanicShop
 {
     public partial class AddCustomerForm : Form
     {
+        readonly SqlConnection connection = DatabaseManager.GetConnection();
+
         public class Customer
         {
             public string FirstName { get; set; } = string.Empty;
@@ -52,6 +55,46 @@ namespace MechanicShop
             };
 
             // TODO: Insert into DB
+
+            // Have user confirm before saving
+            DialogResult result = MessageBox.Show("Insert Customer into Database?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                string p_insert_customer = @"dbo.[insert_customer]";
+
+                SqlCommand command = new SqlCommand(p_insert_customer, connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                // Set SQL Parameters
+                command.Parameters.Clear();
+                SqlParameter p_FirstName = new("@p_fname", customer.FirstName);
+                SqlParameter p_LastName = new("@p_lname", customer.LastName);
+                SqlParameter p_Phone = new("@p_phone", customer.Phone);
+                SqlParameter p_City = new("@p_city", customer.City);
+                SqlParameter p_Street = new("@p_street", customer.Street);
+                SqlParameter p_ApartmentNumber = new("@p_apartment_number", customer.ApartmentNumber);
+                SqlParameter p_State = new("@p_state", customer.State);
+                SqlParameter p_Zip = new("@p_zip", customer.Zip);
+                SqlParameter p_Email = new("@p_email", customer.Email);
+
+                // Add the parameters to the SqlCommand Object
+                command.Parameters.Add(p_FirstName);
+                command.Parameters.Add(p_LastName);
+                command.Parameters.Add(p_Phone);
+                command.Parameters.Add(p_City);
+                command.Parameters.Add(p_Street);
+                command.Parameters.Add(p_ApartmentNumber);
+                command.Parameters.Add(p_State);
+                command.Parameters.Add(p_Zip);
+                command.Parameters.Add(p_Email);
+
+                // EXEC the procedure
+                command.ExecuteNonQuery();
+
+            }
+
+            // REFERENCE: https://www.mssqltips.com/sqlservertip/5810/working-with-sql-server-stored-procedures-and-net/
         }
 
         private void btn_customerCancel_Click(object sender, EventArgs e)
