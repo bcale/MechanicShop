@@ -32,4 +32,3 @@ BEGIN
 	
 	SELECT SCOPE_IDENTITY() AS customer_id; -- Return the ID of the inserted row
 END
-GO
