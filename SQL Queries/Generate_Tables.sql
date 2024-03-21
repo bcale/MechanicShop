@@ -36,7 +36,7 @@ CREATE TABLE technicians (
     technician_id INT IDENTITY(1,1) PRIMARY KEY,
     technician_Fname NVARCHAR(50) NOT NULL,
     technician_Lname NVARCHAR(50) NOT NULL,
-    technician_rank_id INT,
+    technician_rank_id INT NOT NULL,
     CONSTRAINT fk_technicians_technician_rank FOREIGN KEY (technician_rank_id) REFERENCES technician_rank(technician_rank_id)
 );
 
