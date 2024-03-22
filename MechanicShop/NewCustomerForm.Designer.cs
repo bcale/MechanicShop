@@ -1,6 +1,6 @@
 ﻿namespace MechanicShop
 {
-    partial class AddCustomerForm
+    partial class NewCustomerForm
     {
         /// <summary>
         /// Required designer variable.
@@ -48,75 +48,76 @@
             lbl_customerEmail = new Label();
             btn_customerSave = new Button();
             btn_customerCancel = new Button();
+            lbl_AddCustomerTitle = new Label();
             SuspendLayout();
             // 
             // txt_customerFname
             // 
-            txt_customerFname.Location = new Point(12, 45);
+            txt_customerFname.Location = new Point(227, 74);
             txt_customerFname.Name = "txt_customerFname";
-            txt_customerFname.Size = new Size(125, 27);
+            txt_customerFname.Size = new Size(199, 27);
             txt_customerFname.TabIndex = 1;
             // 
             // txt_customerLname
             // 
-            txt_customerLname.Location = new Point(12, 78);
+            txt_customerLname.Location = new Point(227, 107);
             txt_customerLname.Name = "txt_customerLname";
-            txt_customerLname.Size = new Size(125, 27);
+            txt_customerLname.Size = new Size(199, 27);
             txt_customerLname.TabIndex = 2;
             // 
             // txt_customerPhone
             // 
-            txt_customerPhone.Location = new Point(12, 111);
+            txt_customerPhone.Location = new Point(227, 140);
             txt_customerPhone.Name = "txt_customerPhone";
-            txt_customerPhone.Size = new Size(125, 27);
+            txt_customerPhone.Size = new Size(199, 27);
             txt_customerPhone.TabIndex = 3;
             // 
             // txt_customerCity
             // 
-            txt_customerCity.Location = new Point(12, 144);
+            txt_customerCity.Location = new Point(227, 173);
             txt_customerCity.Name = "txt_customerCity";
-            txt_customerCity.Size = new Size(125, 27);
+            txt_customerCity.Size = new Size(199, 27);
             txt_customerCity.TabIndex = 4;
             // 
             // txt_customerStreet
             // 
-            txt_customerStreet.Location = new Point(12, 177);
+            txt_customerStreet.Location = new Point(227, 206);
             txt_customerStreet.Name = "txt_customerStreet";
-            txt_customerStreet.Size = new Size(125, 27);
+            txt_customerStreet.Size = new Size(199, 27);
             txt_customerStreet.TabIndex = 5;
             // 
             // txt_customerAptNumber
             // 
-            txt_customerAptNumber.Location = new Point(12, 210);
+            txt_customerAptNumber.Location = new Point(227, 239);
             txt_customerAptNumber.Name = "txt_customerAptNumber";
-            txt_customerAptNumber.Size = new Size(125, 27);
+            txt_customerAptNumber.Size = new Size(199, 27);
             txt_customerAptNumber.TabIndex = 6;
             // 
             // txt_customerState
             // 
-            txt_customerState.Location = new Point(12, 243);
+            txt_customerState.Location = new Point(227, 272);
             txt_customerState.Name = "txt_customerState";
-            txt_customerState.Size = new Size(125, 27);
+            txt_customerState.Size = new Size(199, 27);
             txt_customerState.TabIndex = 7;
             // 
             // txt_customerZip
             // 
-            txt_customerZip.Location = new Point(12, 276);
+            txt_customerZip.Location = new Point(227, 305);
             txt_customerZip.Name = "txt_customerZip";
-            txt_customerZip.Size = new Size(125, 27);
+            txt_customerZip.Size = new Size(199, 27);
             txt_customerZip.TabIndex = 8;
             // 
             // txt_customerEmail
             // 
-            txt_customerEmail.Location = new Point(12, 309);
+            txt_customerEmail.Location = new Point(227, 338);
             txt_customerEmail.Name = "txt_customerEmail";
-            txt_customerEmail.Size = new Size(125, 27);
+            txt_customerEmail.Size = new Size(199, 27);
             txt_customerEmail.TabIndex = 9;
             // 
             // lbl_customerFname
             // 
             lbl_customerFname.AutoSize = true;
-            lbl_customerFname.Location = new Point(143, 48);
+            lbl_customerFname.Location = new Point(11, 77);
             lbl_customerFname.Name = "lbl_customerFname";
             lbl_customerFname.Size = new Size(77, 20);
             lbl_customerFname.TabIndex = 10;
@@ -125,7 +126,7 @@
             // lbl_customerLname
             // 
             lbl_customerLname.AutoSize = true;
-            lbl_customerLname.Location = new Point(143, 81);
+            lbl_customerLname.Location = new Point(12, 110);
             lbl_customerLname.Name = "lbl_customerLname";
             lbl_customerLname.Size = new Size(76, 20);
             lbl_customerLname.TabIndex = 11;
@@ -134,16 +135,17 @@
             // lbl_customerPhone
             // 
             lbl_customerPhone.AutoSize = true;
-            lbl_customerPhone.Location = new Point(143, 114);
+            lbl_customerPhone.Location = new Point(12, 143);
             lbl_customerPhone.Name = "lbl_customerPhone";
             lbl_customerPhone.Size = new Size(108, 20);
             lbl_customerPhone.TabIndex = 12;
             lbl_customerPhone.Text = "Phone Number";
+            lbl_customerPhone.Click += lbl_customerPhone_Click;
             // 
             // lbl_customerCity
             // 
             lbl_customerCity.AutoSize = true;
-            lbl_customerCity.Location = new Point(143, 151);
+            lbl_customerCity.Location = new Point(12, 176);
             lbl_customerCity.Name = "lbl_customerCity";
             lbl_customerCity.Size = new Size(34, 20);
             lbl_customerCity.TabIndex = 13;
@@ -152,7 +154,7 @@
             // lbl_customerStreet
             // 
             lbl_customerStreet.AutoSize = true;
-            lbl_customerStreet.Location = new Point(143, 180);
+            lbl_customerStreet.Location = new Point(12, 209);
             lbl_customerStreet.Name = "lbl_customerStreet";
             lbl_customerStreet.Size = new Size(48, 20);
             lbl_customerStreet.TabIndex = 14;
@@ -161,7 +163,7 @@
             // lbl_customerAptNumber
             // 
             lbl_customerAptNumber.AutoSize = true;
-            lbl_customerAptNumber.Location = new Point(143, 213);
+            lbl_customerAptNumber.Location = new Point(12, 242);
             lbl_customerAptNumber.Name = "lbl_customerAptNumber";
             lbl_customerAptNumber.Size = new Size(138, 20);
             lbl_customerAptNumber.TabIndex = 15;
@@ -170,7 +172,7 @@
             // lbl_customerState
             // 
             lbl_customerState.AutoSize = true;
-            lbl_customerState.Location = new Point(143, 250);
+            lbl_customerState.Location = new Point(12, 275);
             lbl_customerState.Name = "lbl_customerState";
             lbl_customerState.Size = new Size(43, 20);
             lbl_customerState.TabIndex = 16;
@@ -179,7 +181,7 @@
             // lbl_customerZip
             // 
             lbl_customerZip.AutoSize = true;
-            lbl_customerZip.Location = new Point(143, 283);
+            lbl_customerZip.Location = new Point(12, 308);
             lbl_customerZip.Name = "lbl_customerZip";
             lbl_customerZip.Size = new Size(31, 20);
             lbl_customerZip.TabIndex = 17;
@@ -188,7 +190,7 @@
             // lbl_customerEmail
             // 
             lbl_customerEmail.AutoSize = true;
-            lbl_customerEmail.Location = new Point(143, 316);
+            lbl_customerEmail.Location = new Point(12, 341);
             lbl_customerEmail.Name = "lbl_customerEmail";
             lbl_customerEmail.Size = new Size(46, 20);
             lbl_customerEmail.TabIndex = 18;
@@ -196,7 +198,7 @@
             // 
             // btn_customerSave
             // 
-            btn_customerSave.Location = new Point(12, 399);
+            btn_customerSave.Location = new Point(12, 456);
             btn_customerSave.Name = "btn_customerSave";
             btn_customerSave.Size = new Size(94, 29);
             btn_customerSave.TabIndex = 19;
@@ -206,7 +208,7 @@
             // 
             // btn_customerCancel
             // 
-            btn_customerCancel.Location = new Point(126, 399);
+            btn_customerCancel.Location = new Point(138, 456);
             btn_customerCancel.Name = "btn_customerCancel";
             btn_customerCancel.Size = new Size(94, 29);
             btn_customerCancel.TabIndex = 20;
@@ -214,11 +216,22 @@
             btn_customerCancel.UseVisualStyleBackColor = true;
             btn_customerCancel.Click += btn_customerCancel_Click;
             // 
-            // AddCustomer
+            // lbl_AddCustomerTitle
+            // 
+            lbl_AddCustomerTitle.AutoSize = true;
+            lbl_AddCustomerTitle.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbl_AddCustomerTitle.Location = new Point(12, 9);
+            lbl_AddCustomerTitle.Name = "lbl_AddCustomerTitle";
+            lbl_AddCustomerTitle.Size = new Size(298, 41);
+            lbl_AddCustomerTitle.TabIndex = 21;
+            lbl_AddCustomerTitle.Text = "Insert Customer Data";
+            // 
+            // AddCustomerForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(456, 497);
+            Controls.Add(lbl_AddCustomerTitle);
             Controls.Add(btn_customerCancel);
             Controls.Add(btn_customerSave);
             Controls.Add(lbl_customerEmail);
@@ -239,7 +252,7 @@
             Controls.Add(txt_customerPhone);
             Controls.Add(txt_customerLname);
             Controls.Add(txt_customerFname);
-            Name = "AddCustomer";
+            Name = "AddCustomerForm";
             Text = "AddCustomer";
             Load += AddCustomer_Load;
             ResumeLayout(false);
@@ -248,7 +261,6 @@
 
         #endregion
 
-        private TextBox txt_customerID;
         private TextBox txt_customerFname;
         private TextBox txt_customerLname;
         private TextBox txt_customerPhone;
@@ -269,5 +281,6 @@
         private Label lbl_customerEmail;
         private Button btn_customerSave;
         private Button btn_customerCancel;
+        private Label lbl_AddCustomerTitle;
     }
 }
