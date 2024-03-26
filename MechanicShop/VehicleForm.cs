@@ -37,21 +37,15 @@ namespace MechanicShop
 
         private void VehicleForm_Load(object sender, EventArgs e)
         {
-            // Retrieve customer names from the database
-            List<string> customerNames = retrieveCustomerNamesFromDatabase();
-
-            // Add each customer name to the ComboBox
-            foreach (string customerName in customerNames)
-            {
-                cbBox_vehicleCustomer.Items.Add(customerName);
-            }
+            // Retrieve customer names from the database and populate the ComboBox
+            PopulateCustomerComboBox();
         }
 
-        private List<string> retrieveCustomerNamesFromDatabase()
-        {
-            List<string> customerNames = new List<string>();
-
-            string query = "SELECT Name FROM Customers";
+        // Populate a ComboBox with the first and last names from the mechanicshop database
+        // format:{lastName}, {firstName}
+        private void PopulateCustomerComboBox()
+        { 
+            string query = "SELECT customer_Fname, customer_Lname FROM Customers";
             SqlCommand command = new SqlCommand(query, connection);
 
             // Read the results and add each customer name to the ComboBox
@@ -59,12 +53,19 @@ namespace MechanicShop
             {
                 while (reader.Read())
                 {
-                    string customerName = reader.GetString(0); // Assuming the customer name is in the first column
-                    cbBox_vehicleCustomer.Items.Add(customerName);
+                    // Get the string (assmued data type is string. Must be in the string format. Use a different Get method for different data types)
+                    // The number passed to the method is the index of the column retrieved in the SQL query
+                    string firstName = reader.GetString(0);
+                    string lastName = reader.GetString(1);
+
+                    string fullName = $"{lastName}, {firstName}";
+                    // Add each customer name to the ComboBox
+                    cbBox_vehicleCustomer.Items.Add(fullName);
+                    // Reference: https://learn.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqldatareader.getsqlstring?view=dotnet-plat-ext-8.0
                 }
+                reader.Close(); // Only one SqlDataReader per associated SqlConnection may be open at a time. Be sure to call Close()
             }
-            return customerNames;
-        }
+        } // Reference: https://learn.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqldatareader.read?view=dotnet-plat-ext-8.0
 
         private void btn_vehicleAdd_Click(object sender, EventArgs e)
         {
@@ -85,8 +86,8 @@ namespace MechanicShop
 
             if (result == DialogResult.Yes)
             {
-                string p_insert_customer = @"dbo.[insert_vehicles]";
-                SqlCommand command = new SqlCommand(p_insert_customer, connection);
+                string p_insert_vehicle = @"dbo.[insert_vehicles]";
+                SqlCommand command = new SqlCommand(p_insert_vehicle, connection);
                 command.CommandType = CommandType.StoredProcedure;
 
                 // Set SQL Parameters
