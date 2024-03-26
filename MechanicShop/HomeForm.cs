@@ -42,5 +42,11 @@ namespace MechanicShop
         {
 
         }
+
+        private void btn_NewTechnician_Click(object sender, EventArgs e)
+        {
+            NewTechnicianForm addTechnicianForm = new NewTechnicianForm();
+            addTechnicianForm.ShowDialog();
+        }
     }
 }
