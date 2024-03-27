@@ -71,7 +71,7 @@ namespace MechanicShop
                     command.Parameters.Clear();
                     SqlParameter p_Customer = new SqlParameter("@p_customer_id", vehicle.CustomerID);
                     SqlParameter p_Make = new SqlParameter("@p_vehicle_make", vehicle.Make);
-                    SqlParameter p_Model = new SqlParameter("@vehicle_model", vehicle.Model);
+                    SqlParameter p_Model = new SqlParameter("@p_vehicle_model", vehicle.Model);
                     SqlParameter p_Trim = new SqlParameter("@p_vehicle_trim", vehicle.Trim);
                     SqlParameter p_Year = new SqlParameter("@p_vehicle_year", vehicle.Year);
                     SqlParameter p_LicensePlate = new SqlParameter("@p_vehicle_license_plate", vehicle.LicensePlate);
@@ -130,8 +130,7 @@ namespace MechanicShop
                 command.Parameters.Add(p_FirstName);
                 command.Parameters.Add(p_LastName);
 
-
-
+                // Create new objects to execute the command
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
 
@@ -145,7 +144,6 @@ namespace MechanicShop
                 {
                     MessageBox.Show("Error: " + ex.Message);
                 }
-
             }
         }
     }
