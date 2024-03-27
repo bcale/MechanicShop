@@ -34,7 +34,7 @@ namespace MechanicShop
         private void btn_NewVehicle_Click(object sender, EventArgs e)
         {
             // Create an instance of the form 
-            NewVehicleForm addVehicleForm = new NewVehicleForm();
+            VehicleForm addVehicleForm = new VehicleForm();
             addVehicleForm.ShowDialog();
         }
 
