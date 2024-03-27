@@ -42,5 +42,12 @@ namespace MechanicShop
         {
 
         }
+
+        private void btn_serviceHistory_Click(object sender, EventArgs e)
+        {
+            // Create an instance of the form 
+            ServiceHistoryForm ServiceHistoryForm = new();
+            ServiceHistoryForm.ShowDialog();
+        }
     }
 }
