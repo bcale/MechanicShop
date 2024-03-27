@@ -42,5 +42,12 @@ namespace MechanicShop
         {
 
         }
+
+        private void btn_NewService_Click(object sender, EventArgs e)
+        {
+            // Create an instance of Services form
+            ServicesForm servicesForm = new ServicesForm();
+            servicesForm.ShowDialog();
+        }
     }
 }
