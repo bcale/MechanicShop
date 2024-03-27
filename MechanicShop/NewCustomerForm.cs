@@ -107,10 +107,5 @@ namespace MechanicShop
                 this.Close();
             }
         }
-
-        private void lbl_customerPhone_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

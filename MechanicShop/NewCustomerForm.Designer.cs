@@ -140,7 +140,6 @@
             lbl_customerPhone.Size = new Size(108, 20);
             lbl_customerPhone.TabIndex = 12;
             lbl_customerPhone.Text = "Phone Number";
-            lbl_customerPhone.Click += lbl_customerPhone_Click;
             // 
             // lbl_customerCity
             // 
