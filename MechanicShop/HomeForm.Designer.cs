@@ -38,10 +38,12 @@
             // 
             // btn_Management
             // 
+
             btn_Management.Location = new Point(245, 15);
             btn_Management.Margin = new Padding(4, 4, 4, 4);
             btn_Management.Name = "btn_Management";
             btn_Management.Size = new Size(226, 66);
+
             btn_Management.TabIndex = 0;
             btn_Management.Text = "Management";
             btn_Management.UseVisualStyleBackColor = true;
@@ -49,6 +51,7 @@
             // 
             // btn_NewCustomer
             // 
+
             btn_NewCustomer.Location = new Point(11, 15);
             btn_NewCustomer.Margin = new Padding(4, 4, 4, 4);
             btn_NewCustomer.Name = "btn_NewCustomer";
@@ -61,6 +64,7 @@
             // label1
             // 
             label1.AutoSize = true;
+
             label1.Location = new Point(172, 370);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
@@ -70,6 +74,7 @@
             // 
             // btn_NewVehicle
             // 
+
             btn_NewVehicle.Location = new Point(11, 89);
             btn_NewVehicle.Margin = new Padding(4, 4, 4, 4);
             btn_NewVehicle.Name = "btn_NewVehicle";
@@ -81,6 +86,7 @@
             // 
             // btn_NewTechnician
             // 
+
             btn_NewTechnician.Location = new Point(245, 89);
             btn_NewTechnician.Margin = new Padding(4, 4, 4, 4);
             btn_NewTechnician.Name = "btn_NewTechnician";
@@ -98,6 +104,7 @@
             btn_NewService.TabIndex = 5;
             btn_NewService.Text = "New Service";
             btn_NewService.UseVisualStyleBackColor = true;
+            btn_NewService.Click += btn_NewService_Click;
             // 
             // HomeForm
             // 
@@ -110,7 +117,9 @@
             Controls.Add(label1);
             Controls.Add(btn_NewCustomer);
             Controls.Add(btn_Management);
+
             Margin = new Padding(4, 4, 4, 4);
+
             Name = "HomeForm";
             Text = "Database Interface";
             Load += HomeForm_Load;
