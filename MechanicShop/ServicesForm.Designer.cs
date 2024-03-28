@@ -35,18 +35,21 @@
             txt_ServiceDescription = new TextBox();
             lbl_ServiceCost = new Label();
             txt_ServiceCost = new TextBox();
+            btn_addService = new Button();
+            btn_cancel = new Button();
+            label1 = new Label();
+            txt_reqTechRank = new TextBox();
             SuspendLayout();
             // 
             // lbl_ServicesTitle
             // 
             lbl_ServicesTitle.AutoSize = true;
             lbl_ServicesTitle.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbl_ServicesTitle.Location = new Point(57, 52);
+            lbl_ServicesTitle.Location = new Point(57, 40);
             lbl_ServicesTitle.Name = "lbl_ServicesTitle";
-            lbl_ServicesTitle.Size = new Size(317, 65);
+            lbl_ServicesTitle.Size = new Size(278, 65);
             lbl_ServicesTitle.TabIndex = 0;
-            lbl_ServicesTitle.Text = "Select Service";
-            lbl_ServicesTitle.Click += lbl_ServicesTitle_Click;
+            lbl_ServicesTitle.Text = "Add Service";
             // 
             // lbl_ServiceName
             // 
@@ -56,15 +59,13 @@
             lbl_ServiceName.Size = new Size(161, 32);
             lbl_ServiceName.TabIndex = 1;
             lbl_ServiceName.Text = "Service Name";
-            lbl_ServiceName.Click += lbl_ServiceName_Click;
             // 
             // txt_ServiceName
             // 
-            txt_ServiceName.Location = new Point(393, 183);
+            txt_ServiceName.Location = new Point(458, 179);
             txt_ServiceName.Name = "txt_ServiceName";
             txt_ServiceName.Size = new Size(482, 39);
             txt_ServiceName.TabIndex = 2;
-            txt_ServiceName.TextChanged += txt_ServiceName_TextChanged;
             // 
             // lbl_ServiceDescription
             // 
@@ -74,15 +75,13 @@
             lbl_ServiceDescription.Size = new Size(218, 32);
             lbl_ServiceDescription.TabIndex = 3;
             lbl_ServiceDescription.Text = "Service Description";
-            lbl_ServiceDescription.Click += lbl_ServiceDescription_Click;
             // 
             // txt_ServiceDescription
             // 
-            txt_ServiceDescription.Location = new Point(393, 262);
+            txt_ServiceDescription.Location = new Point(458, 262);
             txt_ServiceDescription.Name = "txt_ServiceDescription";
             txt_ServiceDescription.Size = new Size(482, 39);
             txt_ServiceDescription.TabIndex = 4;
-            txt_ServiceDescription.TextChanged += txt_ServiceDescription_TextChanged;
             // 
             // lbl_ServiceCost
             // 
@@ -95,17 +94,56 @@
             // 
             // txt_ServiceCost
             // 
-            txt_ServiceCost.Location = new Point(393, 335);
+            txt_ServiceCost.Location = new Point(458, 328);
             txt_ServiceCost.Name = "txt_ServiceCost";
             txt_ServiceCost.Size = new Size(482, 39);
             txt_ServiceCost.TabIndex = 6;
-            txt_ServiceCost.TextChanged += txt_ServiceCost_TextChanged;
+            // 
+            // btn_addService
+            // 
+            btn_addService.Location = new Point(57, 529);
+            btn_addService.Name = "btn_addService";
+            btn_addService.Size = new Size(150, 46);
+            btn_addService.TabIndex = 7;
+            btn_addService.Text = "Add Service";
+            btn_addService.UseVisualStyleBackColor = true;
+            btn_addService.Click += btn_addService_Click;
+            // 
+            // btn_cancel
+            // 
+            btn_cancel.Location = new Point(275, 529);
+            btn_cancel.Name = "btn_cancel";
+            btn_cancel.Size = new Size(150, 46);
+            btn_cancel.TabIndex = 8;
+            btn_cancel.Text = "Cancel";
+            btn_cancel.UseVisualStyleBackColor = true;
+            btn_cancel.Click += btn_cancel_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(126, 398);
+            label1.Name = "label1";
+            label1.Size = new Size(287, 32);
+            label1.TabIndex = 9;
+            label1.Text = "Required Technician Rank";
+            // 
+            // txt_reqTechRank
+            // 
+            txt_reqTechRank.Location = new Point(458, 391);
+            txt_reqTechRank.Name = "txt_reqTechRank";
+            txt_reqTechRank.Size = new Size(482, 39);
+            txt_reqTechRank.TabIndex = 10;
             // 
             // ServicesForm
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1206, 612);
+            ClientSize = new Size(1236, 624);
+            Controls.Add(txt_reqTechRank);
+            Controls.Add(label1);
+            Controls.Add(btn_cancel);
+            Controls.Add(btn_addService);
             Controls.Add(txt_ServiceCost);
             Controls.Add(lbl_ServiceCost);
             Controls.Add(txt_ServiceDescription);
@@ -115,7 +153,6 @@
             Controls.Add(lbl_ServicesTitle);
             Name = "ServicesForm";
             Text = "Services";
-            Load += ServicesForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -129,5 +166,9 @@
         private TextBox txt_ServiceDescription;
         private Label lbl_ServiceCost;
         private TextBox txt_ServiceCost;
+        private Button btn_addService;
+        private Button btn_cancel;
+        private Label label1;
+        private TextBox txt_reqTechRank;
     }
 }
