@@ -13,7 +13,8 @@ CREATE PROCEDURE [dbo].[insert_service]
 (
     @p_serviceName 	VARCHAR(50),
     @p_serviceDescription 	VARCHAR(100),
-    @p_serviceCost 	FLOAT
+    @p_serviceCost 	FLOAT,
+    @p_serviceRankRequirement VARCHAR(50)
 )
 AS
 BEGIN
@@ -21,8 +22,8 @@ BEGIN
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
-	INSERT INTO services(service_name, service_description, service_cost)
-    VALUES (@p_serviceName, @p_serviceDescription, @p_serviceCost);
+	INSERT INTO services(service_name, service_description, service_cost, required_technician_rank_id)    
+	VALUES (@p_serviceName, @p_serviceDescription, @p_serviceCost, @p_serviceRankRequirement);
 	
 	SELECT SCOPE_IDENTITY() AS service_id; -- Return the ID of the inserted row
 END
