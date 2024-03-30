@@ -37,8 +37,8 @@
             txt_ServiceCost = new TextBox();
             btn_addService = new Button();
             btn_cancel = new Button();
-            label1 = new Label();
-            txt_reqTechRank = new TextBox();
+            lbl_RequiredTechRank = new Label();
+            cbBox_reqTechRank = new ComboBox();
             SuspendLayout();
             // 
             // lbl_ServicesTitle
@@ -119,29 +119,31 @@
             btn_cancel.UseVisualStyleBackColor = true;
             btn_cancel.Click += btn_cancel_Click;
             // 
-            // label1
+            // lbl_RequiredTechRank
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(126, 398);
-            label1.Name = "label1";
-            label1.Size = new Size(287, 32);
-            label1.TabIndex = 9;
-            label1.Text = "Required Technician Rank";
+            lbl_RequiredTechRank.AutoSize = true;
+            lbl_RequiredTechRank.Location = new Point(126, 398);
+            lbl_RequiredTechRank.Name = "lbl_RequiredTechRank";
+            lbl_RequiredTechRank.Size = new Size(287, 32);
+            lbl_RequiredTechRank.TabIndex = 9;
+            lbl_RequiredTechRank.Text = "Required Technician Rank";
             // 
-            // txt_reqTechRank
+            // cbBox_reqTechRank
             // 
-            txt_reqTechRank.Location = new Point(458, 391);
-            txt_reqTechRank.Name = "txt_reqTechRank";
-            txt_reqTechRank.Size = new Size(482, 39);
-            txt_reqTechRank.TabIndex = 10;
+            cbBox_reqTechRank.AllowDrop = true;
+            cbBox_reqTechRank.FormattingEnabled = true;
+            cbBox_reqTechRank.Location = new Point(458, 395);
+            cbBox_reqTechRank.Name = "cbBox_reqTechRank";
+            cbBox_reqTechRank.Size = new Size(482, 40);
+            cbBox_reqTechRank.TabIndex = 10;
             // 
             // ServicesForm
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1236, 624);
-            Controls.Add(txt_reqTechRank);
-            Controls.Add(label1);
+            Controls.Add(cbBox_reqTechRank);
+            Controls.Add(lbl_RequiredTechRank);
             Controls.Add(btn_cancel);
             Controls.Add(btn_addService);
             Controls.Add(txt_ServiceCost);
@@ -168,7 +170,7 @@
         private TextBox txt_ServiceCost;
         private Button btn_addService;
         private Button btn_cancel;
-        private Label label1;
-        private TextBox txt_reqTechRank;
+        private Label lbl_RequiredTechRank;
+        private ComboBox cbBox_reqTechRank;
     }
 }
