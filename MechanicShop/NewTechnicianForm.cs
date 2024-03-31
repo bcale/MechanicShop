@@ -26,11 +26,13 @@ namespace MechanicShop
         {
             InitializeComponent();
             connection = DatabaseManager.GetConnection();
+            PopulateCustomerComboBox();
+
         }
 
         private void AddTechnician_Load(object sender, EventArgs e)
         {
-            PopulateCustomerComboBox();
+
         }
 
         private void btn_technicianSave_Click(object sender, EventArgs e)
@@ -86,7 +88,7 @@ namespace MechanicShop
         // format:{lastName}, {firstName}
         private void PopulateCustomerComboBox()
         {
-            string query = "SELECT customer_Fname, customer_Lname FROM customers";
+            string query = "SELECT technician_rank_id FROM technician_rank";
             SqlCommand command = new SqlCommand(query, connection);
 
             // Read the results and add each customer name to the ComboBox
@@ -96,18 +98,15 @@ namespace MechanicShop
                 {
                     // Get the string (assmued data type is string. Must be in the string format. Use a different Get method for different data types)
                     // The number passed to the method is the index of the column retrieved in the SQL query
-                    string firstName = reader.GetString(0);
-                    string lastName = reader.GetString(1);
+                    int technicianRanks = reader.GetInt32(0);
 
-                    string fullName = $"{lastName}, {firstName}";
                     // Add each customer name to the ComboBox
-                    cmbo_technicianRank.Items.Add(fullName);
+                    cmbo_technicianRank.Items.Add(technicianRanks);
                     // Reference: https://learn.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqldatareader.getsqlstring?view=dotnet-plat-ext-8.0
                 }
                 reader.Close(); // Only one SqlDataReader per associated SqlConnection may be open at a time. Be sure to call Close()
             }
-        } // Reference: https://learn.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqldatareader.read?view=dotnet-plat-ext-8.0
-
-        
+        } // Reference: https://learn.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqldatareader.read?view=dotnet-plat-ext-8.0}
     }
 }
+
