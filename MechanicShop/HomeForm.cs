@@ -49,5 +49,11 @@ namespace MechanicShop
             ServicesForm servicesForm = new ServicesForm();
             servicesForm.ShowDialog();
         }
+
+        private void btn_NewTechnician_Click(object sender, EventArgs e)
+        {
+            NewTechnicianForm addTechnicianForm = new NewTechnicianForm();
+            addTechnicianForm.ShowDialog();
+        }
     }
 }
