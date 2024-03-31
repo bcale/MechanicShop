@@ -19,6 +19,7 @@ namespace MechanicShop
         {
             public string FirstName { get; set; } = string.Empty;
             public string LastName { get; set; } = string.Empty;
+            public string TechRank { get; set; } = string.Empty;
 
 
         }
@@ -41,7 +42,7 @@ namespace MechanicShop
             {
                 FirstName = txt_technicianFname.Text,
                 LastName = txt_technicianLname.Text,
-
+                TechRank = cmbo_technicianRank.Text,
             };
 
             // Have user confirm before saving
@@ -58,12 +59,13 @@ namespace MechanicShop
                 command.Parameters.Clear();
                 SqlParameter p_FirstName = new("@p_fname", technician.FirstName);
                 SqlParameter p_LastName = new("@p_lname", technician.LastName);
-
+                SqlParameter p_TechRank = new("@p_rank", technician.TechRank);
 
 
                 // Add the parameters to the SqlCommand Object
                 command.Parameters.Add(p_FirstName);
                 command.Parameters.Add(p_LastName);
+                command.Parameters.Add(p_TechRank);
 
 
 
