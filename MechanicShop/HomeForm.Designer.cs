@@ -38,12 +38,10 @@
             // 
             // btn_Management
             // 
-
-            btn_Management.Location = new Point(245, 15);
-            btn_Management.Margin = new Padding(4, 4, 4, 4);
+            btn_Management.Location = new Point(172, 9);
+            btn_Management.Margin = new Padding(3, 2, 3, 2);
             btn_Management.Name = "btn_Management";
-            btn_Management.Size = new Size(226, 66);
-
+            btn_Management.Size = new Size(158, 40);
             btn_Management.TabIndex = 0;
             btn_Management.Text = "Management";
             btn_Management.UseVisualStyleBackColor = true;
@@ -51,11 +49,10 @@
             // 
             // btn_NewCustomer
             // 
-
-            btn_NewCustomer.Location = new Point(11, 15);
-            btn_NewCustomer.Margin = new Padding(4, 4, 4, 4);
+            btn_NewCustomer.Location = new Point(8, 9);
+            btn_NewCustomer.Margin = new Padding(3, 2, 3, 2);
             btn_NewCustomer.Name = "btn_NewCustomer";
-            btn_NewCustomer.Size = new Size(226, 66);
+            btn_NewCustomer.Size = new Size(158, 40);
             btn_NewCustomer.TabIndex = 1;
             btn_NewCustomer.Text = "New Customer";
             btn_NewCustomer.UseVisualStyleBackColor = true;
@@ -64,21 +61,18 @@
             // label1
             // 
             label1.AutoSize = true;
-
-            label1.Location = new Point(172, 370);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(120, 222);
             label1.Name = "label1";
-            label1.Size = new Size(290, 25);
+            label1.Size = new Size(196, 15);
             label1.TabIndex = 2;
             label1.Text = "Careful Technicians Collaborating ™";
             // 
             // btn_NewVehicle
             // 
-
-            btn_NewVehicle.Location = new Point(11, 89);
-            btn_NewVehicle.Margin = new Padding(4, 4, 4, 4);
+            btn_NewVehicle.Location = new Point(8, 53);
+            btn_NewVehicle.Margin = new Padding(3, 2, 3, 2);
             btn_NewVehicle.Name = "btn_NewVehicle";
-            btn_NewVehicle.Size = new Size(226, 66);
+            btn_NewVehicle.Size = new Size(158, 40);
             btn_NewVehicle.TabIndex = 3;
             btn_NewVehicle.Text = "New Vehicle";
             btn_NewVehicle.UseVisualStyleBackColor = true;
@@ -86,21 +80,21 @@
             // 
             // btn_NewTechnician
             // 
-
-            btn_NewTechnician.Location = new Point(245, 89);
-            btn_NewTechnician.Margin = new Padding(4, 4, 4, 4);
+            btn_NewTechnician.Location = new Point(172, 53);
+            btn_NewTechnician.Margin = new Padding(3, 2, 3, 2);
             btn_NewTechnician.Name = "btn_NewTechnician";
-            btn_NewTechnician.Size = new Size(226, 66);
+            btn_NewTechnician.Size = new Size(158, 40);
             btn_NewTechnician.TabIndex = 4;
             btn_NewTechnician.Text = "New Technician";
             btn_NewTechnician.UseVisualStyleBackColor = true;
+            btn_NewTechnician.Click += btn_NewTechnician_Click;
             // 
             // btn_NewService
             // 
-            btn_NewService.Location = new Point(15, 262);
-            btn_NewService.Margin = new Padding(4, 4, 4, 4);
+            btn_NewService.Location = new Point(10, 157);
+            btn_NewService.Margin = new Padding(3, 2, 3, 2);
             btn_NewService.Name = "btn_NewService";
-            btn_NewService.Size = new Size(226, 66);
+            btn_NewService.Size = new Size(158, 40);
             btn_NewService.TabIndex = 5;
             btn_NewService.Text = "New Service";
             btn_NewService.UseVisualStyleBackColor = true;
@@ -108,18 +102,16 @@
             // 
             // HomeForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(484, 399);
+            ClientSize = new Size(339, 239);
             Controls.Add(btn_NewService);
             Controls.Add(btn_NewTechnician);
             Controls.Add(btn_NewVehicle);
             Controls.Add(label1);
             Controls.Add(btn_NewCustomer);
             Controls.Add(btn_Management);
-
-            Margin = new Padding(4, 4, 4, 4);
-
+            Margin = new Padding(3, 2, 3, 2);
             Name = "HomeForm";
             Text = "Database Interface";
             Load += HomeForm_Load;
