@@ -135,6 +135,7 @@
             btn_confirmAppointment.TabIndex = 10;
             btn_confirmAppointment.Text = "Confirm Appointment";
             btn_confirmAppointment.UseVisualStyleBackColor = true;
+            btn_confirmAppointment.Click += btn_confirmAppointment_Click;
             // 
             // btn_cancel
             // 
