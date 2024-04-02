@@ -109,7 +109,7 @@
             lbl_selectServices.Name = "lbl_selectServices";
             lbl_selectServices.Size = new Size(116, 20);
             lbl_selectServices.TabIndex = 6;
-            lbl_selectServices.Text = "Select Service";
+            lbl_selectServices.Text = "Select Service(s)";
             // 
             // cmbBox_selectServices
             // 

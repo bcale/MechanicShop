@@ -40,7 +40,7 @@ namespace MechanicShop
             connection = DatabaseManager.GetConnection();
             PopulateSelectCustomerComboBox();
             //cmbBox_selectCustomer.SelectedIndexChanged += cmbBox_selectCustomer_SelectedIndexChanged; --> Manual change in NewAppointmentDesigner.cs to subscribe to index change of the customer selection combo box; Putting here so you know :]
-            PopulateSelectServicesComboBox();
+            PopulateSelectServiceComboBox();
         }
 
         private void NewAppointmentForm_Load(object sender, EventArgs e)
@@ -78,11 +78,11 @@ namespace MechanicShop
                 }
                 reader.Close(); // Only one SqlDataReader per associated SqlConnection may be open at a time. Be sure to call Close()
             }
-        } 
+        } // Reference: https://learn.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqldatareader.read?view=dotnet-plat-ext-8.0
 
-        
-        // Populate the Select Service comboBox using services table; retrieve service name
-        private void PopulateSelectServiceComboBox()
+
+    // Populate the Select Service comboBox using services table; retrieve service name
+    private void PopulateSelectServiceComboBox()
         {
             string query = "SELECT service_name FROM services";
             SqlCommand command = new SqlCommand(query, connection);
