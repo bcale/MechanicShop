@@ -78,7 +78,32 @@ namespace MechanicShop
                 }
                 reader.Close(); // Only one SqlDataReader per associated SqlConnection may be open at a time. Be sure to call Close()
             }
-        } // Reference: https://learn.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqldatareader.read?view=dotnet-plat-ext-8.0
+        } 
+
+        
+        // Populate the Select Service comboBox using services table; retrieve service name
+        private void PopulateSelectServiceComboBox()
+        {
+            string query = "SELECT service_name FROM services";
+            SqlCommand command = new SqlCommand(query, connection);
+
+            // Read the results and add each service name to the ComboBox
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    // Get the service names.
+                    // The number passed to the method is the index of the column retrieved in the SQL query. 
+                    // Note: column count begins with field selected in query above, not necessarily the 1st column in the table
+                    string serviceName = reader.GetString(0);
+
+
+                    //add each service name to comboBox
+                    cmbBox_selectServices.Items.Add(serviceName);
+                }
+                reader.Close(); // Only one SqlDataReader per associated SqlConnection may be open at a time. Be sure to call Close()
+            }
+        }
 
 
         // Populate the Select Customer Vehicle comboBox using the vehicle table and chosen cutomerID
