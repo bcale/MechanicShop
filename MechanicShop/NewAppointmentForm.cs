@@ -11,6 +11,13 @@ using System.Windows.Forms;
 using static MechanicShop.NewCustomerForm;
 
 namespace MechanicShop
+
+// https://youtu.be/cKUAki80wRY?si=MVf352m-TT0bFLRq
+// https://youtu.be/1N5WZPItAc0?si=z33bTeTrifGIa0az
+// https://youtu.be/Mb8Cuqh3jPU?si=9qSKW_WHpvnpD3E8
+// https://youtu.be/D1xvxYpWDsM?si=-nDybaPIdOcMD_Qd
+// https://youtu.be/Eq6EYcpWB_c?si=ngDf1EzeQs8dQkq_
+// https://youtube.com/shorts/j_B-iMJAcjI?si=gK62HLHDmgKGrn5E
 {
     public partial class NewAppointmentForm : Form
     {
@@ -31,6 +38,19 @@ namespace MechanicShop
             InitializeComponent();
             connection = DatabaseManager.GetConnection();
             PopulateSelectCustomerComboBox();
+            //cmbBox_selectCustomer.SelectedIndexChanged += cmbBox_selectCustomer_SelectedIndexChanged; --> Manual change in NewAppointmentDesigner.cs to subscribe to index change of the customer selection combo box; Putting here so you know :]
+            PopulateSelectServicesComboBox();
+        }
+
+        private void NewAppointmentForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        // Call PopulateSelectCustomerVehicleComboBox() when the selected index of the customer_select combo box changes
+        private void cmbBox_selectCustomer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PopulateSelectCustomerVehicleComboBox();
         }
 
         // Populate the Select Customer comboBox using customers table; retrieve First 
@@ -50,7 +70,7 @@ namespace MechanicShop
                     // Note: column count begins with field selected in query above, not necessarily the 1st column in the table
                     string customerName = reader.GetString(0) + " " + reader.GetString(1);
 
-                   
+
                     //add each full name to comboBox
                     cmbBox_selectCustomer.Items.Add(customerName);
                 }
@@ -59,11 +79,79 @@ namespace MechanicShop
         } // Reference: https://learn.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqldatareader.read?view=dotnet-plat-ext-8.0
 
 
+        // Populate the Select Customer Vehicle comboBox using the vehicle table and chosen cutomerID
+        // The functionality of customer selection should be adjusted in such a way that the customerID is pulled from the DB
+        //          In this implementation, having several people with the same first and last name will result in unexpected behavior 
+        private void PopulateSelectCustomerVehicleComboBox()
+        {
+            // Get the selected customer's name
+            string selected_customer = cmbBox_selectCustomer.Text;
+
+        // Get the customerID -- Again, this will not work if there are 2 or more customers with the same name.
+            // Separate the name based on the space char
+            string fullName = selected_customer;
+            string[] names = fullName.Split(' ');
+            string customer_Fname = names[0];
+            string customer_Lname = names[1];
+
+            // We should probably make a function for this? I dunno
+            string query = $"SELECT customer_id FROM customers WHERE customer_Fname='{customer_Fname}' AND customer_Lname='{customer_Lname}';"; // Use $ before a string use interpolated strings. Looks cleaner!
+            // https://open.spotify.com/album/7aeIwIg63Qyt1bzjsPufzl?si=F0p65GeGQcOFDknsLmhStw
+            SqlCommand getCustID = new SqlCommand(query, connection);
+
+            // Read the results and add each customer first and last name to the ComboBox
+            int customerID = 0;
+            using (SqlDataReader reader = getCustID.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    customerID = reader.GetInt32(0);
+                }
+                else
+                {
+                    MessageBox.Show("Customer ID not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            // Get the vehicle plate
+            // I chose the plate because its unique to a vehicle yet not as obscure as a DB id or long as a VIN 
+            // Better way to do this would be something similar to how I did it in the new vehicle form
+            query = $"SELECT vehicle_license_plate FROM vehicles WHERE customer_id='{customerID}'";
+
+            SqlCommand command = new(query, connection);
+
+            // Read the results and add each customer first and last name to the ComboBox
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    string vehicleLicensePlate = reader.GetString(0);
+                    cmbBox_selectCustomerCar.Items.Add(vehicleLicensePlate);
+                }
+            }
+        }
+
+        // Fill the services combo box with the available services
+        // This can be made better as well. I would suggest a similar approach that was done in the new vehicle form to display full service details.
+        //      Or perhaps there is a better looking option
+        private void PopulateSelectServicesComboBox()
+        {
+            string query = "SELECT service_name FROM services";
+            SqlCommand command = new(query, connection);
+
+            using SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                string service = reader.GetString(0);
+                cmbBox_selectServices.Items.Add(service);
+            }
+        }
+
         private void btn_confirmAppointment_Click(object sender, EventArgs e)
         {
             // Create a new instance of the Appointment class and populate it with 
             // the data from the NewAppointmentForm
-            Appointment appointment = new Appointment
+            Appointment appointment = new()
             {
                 ServiceDate = calendar_selectDate.Text,
                 ServiceTime = calendar_selectTime.Text,
@@ -102,8 +190,6 @@ namespace MechanicShop
                 command.ExecuteNonQuery();
                 this.Close();
             }
-
-            // REFERENCE: https://www.mssqltips.com/sqlservertip/5810/working-with-sql-server-stored-procedures-and-net/
         }
 
         private void btn_cancel_Click(object sender, EventArgs e)

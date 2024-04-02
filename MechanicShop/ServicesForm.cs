@@ -12,6 +12,8 @@ using static MechanicShop.ServicesForm;
 
 namespace MechanicShop
 {
+    // https://youtu.be/o6wtDPVkKqI?si=Wvpvny1jpysj2zJb !!!
+    // https://youtu.be/w2xi6Qjv8mw?si=qyHsqD25t-rT20Zt !
     public partial class ServicesForm : Form
     {
         private readonly SqlConnection connection;
@@ -55,6 +57,7 @@ namespace MechanicShop
                 reader.Close(); // Only one SqlDataReader per associated SqlConnection may be open at a time. Be sure to call Close()
             }
         } // Reference: https://learn.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqldatareader.read?view=dotnet-plat-ext-8.0
+
 
         private void btn_addService_Click(object sender, EventArgs e)
         {
