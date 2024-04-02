@@ -40,6 +40,8 @@
             calendar_selectTime = new DateTimePicker();
             btn_confirmAppointment = new Button();
             btn_cancel = new Button();
+            lbl_selectTechnician = new Label();
+            cmbBox_selectTechnician = new ComboBox();
             SuspendLayout();
             // 
             // calendar_selectDate
@@ -97,9 +99,9 @@
             lbl_selectServices.AutoSize = true;
             lbl_selectServices.Location = new Point(117, 507);
             lbl_selectServices.Name = "lbl_selectServices";
-            lbl_selectServices.Size = new Size(185, 32);
+            lbl_selectServices.Size = new Size(161, 32);
             lbl_selectServices.TabIndex = 6;
-            lbl_selectServices.Text = "Select Service(s)";
+            lbl_selectServices.Text = "Select Service";
             // 
             // cmbBox_selectServices
             // 
@@ -129,7 +131,7 @@
             // 
             // btn_confirmAppointment
             // 
-            btn_confirmAppointment.Location = new Point(114, 602);
+            btn_confirmAppointment.Location = new Point(114, 723);
             btn_confirmAppointment.Name = "btn_confirmAppointment";
             btn_confirmAppointment.Size = new Size(305, 46);
             btn_confirmAppointment.TabIndex = 10;
@@ -139,7 +141,7 @@
             // 
             // btn_cancel
             // 
-            btn_cancel.Location = new Point(712, 602);
+            btn_cancel.Location = new Point(712, 723);
             btn_cancel.Name = "btn_cancel";
             btn_cancel.Size = new Size(150, 46);
             btn_cancel.TabIndex = 11;
@@ -147,11 +149,30 @@
             btn_cancel.UseVisualStyleBackColor = true;
             btn_cancel.Click += btn_cancel_Click;
             // 
+            // lbl_selectTechnician
+            // 
+            lbl_selectTechnician.AutoSize = true;
+            lbl_selectTechnician.Location = new Point(117, 598);
+            lbl_selectTechnician.Name = "lbl_selectTechnician";
+            lbl_selectTechnician.Size = new Size(197, 32);
+            lbl_selectTechnician.TabIndex = 12;
+            lbl_selectTechnician.Text = "Select Technician";
+            // 
+            // cmbBox_selectTechnician
+            // 
+            cmbBox_selectTechnician.FormattingEnabled = true;
+            cmbBox_selectTechnician.Location = new Point(462, 590);
+            cmbBox_selectTechnician.Name = "cmbBox_selectTechnician";
+            cmbBox_selectTechnician.Size = new Size(400, 40);
+            cmbBox_selectTechnician.TabIndex = 13;
+            // 
             // NewAppointmentForm
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1070, 711);
+            ClientSize = new Size(1212, 879);
+            Controls.Add(cmbBox_selectTechnician);
+            Controls.Add(lbl_selectTechnician);
             Controls.Add(btn_cancel);
             Controls.Add(btn_confirmAppointment);
             Controls.Add(calendar_selectTime);
@@ -184,5 +205,7 @@
         private DateTimePicker calendar_selectTime;
         private Button btn_confirmAppointment;
         private Button btn_cancel;
+        private Label lbl_selectTechnician;
+        private ComboBox cmbBox_selectTechnician;
     }
 }
