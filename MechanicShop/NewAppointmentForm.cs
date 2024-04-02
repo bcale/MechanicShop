@@ -30,7 +30,34 @@ namespace MechanicShop
         {
             InitializeComponent();
             connection = DatabaseManager.GetConnection();
+            PopulateSelectCustomerComboBox();
         }
+
+        // Populate the Select Customer comboBox using customers table; retrieve First 
+        // and Last names
+        private void PopulateSelectCustomerComboBox()
+        {
+            string query = "SELECT customer_Fname, customer_Lname FROM customers";
+            SqlCommand command = new SqlCommand(query, connection);
+
+            // Read the results and add each customer first and last name to the ComboBox
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    // Get the customers' first and last names.
+                    // The number passed to the method is the index of the column retrieved in the SQL query. 
+                    // Note: column count begins with field selected in query above, not necessarily the 1st column in the table
+                    string customerName = reader.GetString(0) + " " + reader.GetString(1);
+
+                   
+                    //add each full name to comboBox
+                    cmbBox_selectCustomer.Items.Add(customerName);
+                }
+                reader.Close(); // Only one SqlDataReader per associated SqlConnection may be open at a time. Be sure to call Close()
+            }
+        } // Reference: https://learn.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqldatareader.read?view=dotnet-plat-ext-8.0
+
 
         private void btn_confirmAppointment_Click(object sender, EventArgs e)
         {
@@ -90,5 +117,4 @@ namespace MechanicShop
             }
         }
     }
-
 }

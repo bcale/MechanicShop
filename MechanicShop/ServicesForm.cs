@@ -47,7 +47,7 @@ namespace MechanicShop
                     // Get the string (assmued data type is string. Must be in the string format. Use a different Get method for different data types)
                     // The number passed to the method is the index of the column retrieved in the SQL query
                     int technicianRanks = reader.GetInt32(0);
-                   
+
                     // Add each customer name to the ComboBox
                     cbBox_reqTechRank.Items.Add(technicianRanks);
                     // Reference: https://learn.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqldatareader.getsqlstring?view=dotnet-plat-ext-8.0
