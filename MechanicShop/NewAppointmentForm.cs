@@ -18,6 +18,7 @@ namespace MechanicShop
 // https://youtu.be/D1xvxYpWDsM?si=-nDybaPIdOcMD_Qd
 // https://youtu.be/Eq6EYcpWB_c?si=ngDf1EzeQs8dQkq_
 // https://youtube.com/shorts/j_B-iMJAcjI?si=gK62HLHDmgKGrn5E
+// I got distracted --
 {
     public partial class NewAppointmentForm : Form
     {
@@ -50,6 +51,8 @@ namespace MechanicShop
         // Call PopulateSelectCustomerVehicleComboBox() when the selected index of the customer_select combo box changes
         private void cmbBox_selectCustomer_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Clear the items first 
+            cmbBox_selectCustomerCar.Items.Clear();
             PopulateSelectCustomerVehicleComboBox();
         }
 
@@ -69,7 +72,6 @@ namespace MechanicShop
                     // The number passed to the method is the index of the column retrieved in the SQL query. 
                     // Note: column count begins with field selected in query above, not necessarily the 1st column in the table
                     string customerName = reader.GetString(0) + " " + reader.GetString(1);
-
 
                     //add each full name to comboBox
                     cmbBox_selectCustomer.Items.Add(customerName);
@@ -116,7 +118,7 @@ namespace MechanicShop
             // Get the vehicle plate
             // I chose the plate because its unique to a vehicle yet not as obscure as a DB id or long as a VIN 
             // Better way to do this would be something similar to how I did it in the new vehicle form
-            query = $"SELECT vehicle_license_plate FROM vehicles WHERE customer_id='{customerID}'";
+            query = $"SELECT vehicle_license_plate FROM vehicles WHERE customer_id='{customerID}';";
 
             SqlCommand command = new(query, connection);
 
