@@ -11,14 +11,6 @@ using System.Windows.Forms;
 using static MechanicShop.NewCustomerForm;
 
 namespace MechanicShop
-
-// https://youtu.be/cKUAki80wRY?si=MVf352m-TT0bFLRq
-// https://youtu.be/1N5WZPItAc0?si=z33bTeTrifGIa0az
-// https://youtu.be/Mb8Cuqh3jPU?si=9qSKW_WHpvnpD3E8
-// https://youtu.be/D1xvxYpWDsM?si=-nDybaPIdOcMD_Qd
-// https://youtu.be/Eq6EYcpWB_c?si=ngDf1EzeQs8dQkq_
-// https://youtube.com/shorts/j_B-iMJAcjI?si=gK62HLHDmgKGrn5E
-// I got distracted --
 {
     public partial class NewAppointmentForm : Form
     {
@@ -60,7 +52,7 @@ namespace MechanicShop
         private void cmbBox_selectServices_SelectedIndexChanged(object sender, EventArgs e)
         {   
             cmbBox_selectTech.Items.Clear();
-            PopulateSelectCustomerTechComboBox();
+            PopulateSelectTechComboBox();
         }
 
         /// <summary> Populate the Select Customer comboBox using customers table; retrieve First and Last names  </summary>
@@ -159,7 +151,7 @@ namespace MechanicShop
 
 
         /// <summary> Populate the Select Technician comboBox using the tech table and service rank  </summary>
-        private void PopulateSelectCustomerTechComboBox()
+        private void PopulateSelectTechComboBox()
         {
             // Get the selected service
             string selected_service = cmbBox_selectServices.Text;
@@ -183,14 +175,26 @@ namespace MechanicShop
                 }
             }
 
+            // Create a function for this 
+            query = $"SELECT rank_value FROM technician_rank WHERE technician_rank_id='{requiredRankID}';";
+            SqlCommand getRequiredRankValue = new(query, connection);
+
+            // Read the results and return the rank value for the ID
+            double requiredRankValue = 0;
+            using (SqlDataReader reader = getRequiredRankValue.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    requiredRankValue = reader.GetDouble(0);
+                }
+                else
+                {
+                    MessageBox.Show("Rank not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
             // Get the technicians that can work this job
-            query = $"SELECT technicians.technician_Fname, technicians.technician_Lname" +
-                    $" FROM technicians " +
-                    $"JOIN technician_rank ON technicians.technician_rank_id = technician_rank.technician_rank_id " +
-                    $"WHERE technicians.technician_rank_id = {requiredRankID}" +
-                    $"AND technician_rank.rank_value >= (" +
-                    $"SELECT rank_value " +
-                    $"FROM technician_rank );";
+            query = $"SELECT * FROM select_technicians_withRankValue()";
             SqlCommand command = new(query, connection);
 
             // Read the results and add each tech name to the ComboBox
@@ -198,12 +202,16 @@ namespace MechanicShop
             {
                 while (reader.Read())
                 {
-                    string firstName = reader.GetString(0);
-                    string lastName = reader.GetString(1);
+                    double techrankValue = reader.GetDouble(4);
 
-                    string fullName = $"{lastName}, {firstName}";
+                    if (techrankValue >= requiredRankValue) {
+                        string firstName = reader.GetString(1);
+                        string lastName = reader.GetString(2);
 
-                    cmbBox_selectTech.Items.Add(fullName);
+                        string fullName = $"{lastName}, {firstName}";
+
+                        cmbBox_selectTech.Items.Add(fullName);
+                    }
                 }
             }
         }
