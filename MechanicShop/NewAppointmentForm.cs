@@ -48,7 +48,7 @@ namespace MechanicShop
 
         }
 
-        // Call PopulateSelectCustomerVehicleComboBox() when the selected index of the customer_select combo box changes
+        /// <summary> Call PopulateSelectCustomerVehicleComboBox() when the selected index of the customer_select combo box changes  </summary>
         private void cmbBox_selectCustomer_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Clear the items first 
@@ -56,8 +56,14 @@ namespace MechanicShop
             PopulateSelectCustomerVehicleComboBox();
         }
 
-        // Populate the Select Customer comboBox using customers table; retrieve First 
-        // and Last names
+        /// <summary> Call PopulateSelectCustomerTechComboBox() when the selected index of the service_select combo box changes  </summary>
+        private void cmbBox_selectServices_SelectedIndexChanged(object sender, EventArgs e)
+        {   
+            cmbBox_selectTech.Items.Clear();
+            PopulateSelectCustomerTechComboBox();
+        }
+
+        /// <summary> Populate the Select Customer comboBox using customers table; retrieve First and Last names  </summary>
         private void PopulateSelectCustomerComboBox()
         {
             string query = "SELECT customer_Fname, customer_Lname FROM customers";
@@ -81,40 +87,15 @@ namespace MechanicShop
         } // Reference: https://learn.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqldatareader.read?view=dotnet-plat-ext-8.0
 
 
-    // Populate the Select Service comboBox using services table; retrieve service name
-    private void PopulateSelectServiceComboBox()
-        {
-            string query = "SELECT service_name FROM services";
-            SqlCommand command = new SqlCommand(query, connection);
-
-            // Read the results and add each service name to the ComboBox
-            using (SqlDataReader reader = command.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    // Get the service names.
-                    // The number passed to the method is the index of the column retrieved in the SQL query. 
-                    // Note: column count begins with field selected in query above, not necessarily the 1st column in the table
-                    string serviceName = reader.GetString(0);
-
-
-                    //add each service name to comboBox
-                    cmbBox_selectServices.Items.Add(serviceName);
-                }
-                reader.Close(); // Only one SqlDataReader per associated SqlConnection may be open at a time. Be sure to call Close()
-            }
-        }
-
-
-        // Populate the Select Customer Vehicle comboBox using the vehicle table and chosen cutomerID
-        // The functionality of customer selection should be adjusted in such a way that the customerID is pulled from the DB
-        //          In this implementation, having several people with the same first and last name will result in unexpected behavior 
+        /// <summary> Populate the Select Customer Vehicle comboBox using the vehicle table and chosen cutomerID
+        ///           The functionality of customer selection should be adjusted in such a way that the customerID is pulled from the DB
+        ///           In this implementation, having several people with the same first and last name will result in unexpected behavior  </summary>
         private void PopulateSelectCustomerVehicleComboBox()
         {
             // Get the selected customer's name
             string selected_customer = cmbBox_selectCustomer.Text;
 
-        // Get the customerID -- Again, this will not work if there are 2 or more customers with the same name.
+            // Get the customerID -- Again, this will not work if there are 2 or more customers with the same name.
             // Separate the name based on the space char
             string fullName = selected_customer;
             string[] names = fullName.Split(' ');
@@ -158,10 +139,12 @@ namespace MechanicShop
             }
         }
 
-        // Fill the services combo box with the available services
-        // This can be made better as well. I would suggest a similar approach that was done in the new vehicle form to display full service details.
-        //      Or perhaps there is a better looking option
-        private void PopulateSelectServicesComboBox()
+
+        /// <summary>
+        /// Fill the services combo box with the available services
+        /// This can be made better as well. I would suggest a similar approach that was done in the new vehicle form to display full service details.
+        ///      Or perhaps there is a better looking option </summary>
+        private void PopulateSelectServiceComboBox()
         {
             string query = "SELECT service_name FROM services";
             SqlCommand command = new(query, connection);
@@ -171,6 +154,57 @@ namespace MechanicShop
             {
                 string service = reader.GetString(0);
                 cmbBox_selectServices.Items.Add(service);
+            }
+        }
+
+
+        /// <summary> Populate the Select Technician comboBox using the tech table and service rank  </summary>
+        private void PopulateSelectCustomerTechComboBox()
+        {
+            // Get the selected service
+            string selected_service = cmbBox_selectServices.Text;
+
+            // Create a function for this 
+            string query = $"SELECT required_technician_rank_id FROM services WHERE service_name='{selected_service}';";
+
+            SqlCommand getRequiredRank = new(query, connection);
+
+            // Read the results and add each customer first and last name to the ComboBox
+            int requiredRankID = 0;
+            using (SqlDataReader reader = getRequiredRank.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    requiredRankID = reader.GetInt32(0);
+                }
+                else
+                {
+                    MessageBox.Show("Rank not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            // Get the technicians that can work this job
+            query = $"SELECT technicians.technician_Fname, technicians.technician_Lname" +
+                    $" FROM technicians " +
+                    $"JOIN technician_rank ON technicians.technician_rank_id = technician_rank.technician_rank_id " +
+                    $"WHERE technicians.technician_rank_id = {requiredRankID}" +
+                    $"AND technician_rank.rank_value >= (" +
+                    $"SELECT rank_value " +
+                    $"FROM technician_rank );";
+            SqlCommand command = new(query, connection);
+
+            // Read the results and add each tech name to the ComboBox
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    string firstName = reader.GetString(0);
+                    string lastName = reader.GetString(1);
+
+                    string fullName = $"{lastName}, {firstName}";
+
+                    cmbBox_selectTech.Items.Add(fullName);
+                }
             }
         }
 
