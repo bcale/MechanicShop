@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static MechanicShop.NewCustomerForm;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace MechanicShop
 {
@@ -24,6 +25,8 @@ namespace MechanicShop
             public string CustomerName { get; set; } = string.Empty;
             public string CustomerCar { get; set; } = string.Empty;
             public string SelectedService { get; set; } = string.Empty;
+            public string SelectedTechnician { get; set; } = string.Empty;
+            public bool Status { get; set; } = false;
         }
 
         public NewAppointmentForm()
@@ -50,8 +53,8 @@ namespace MechanicShop
 
         /// <summary> Call PopulateSelectCustomerTechComboBox() when the selected index of the service_select combo box changes  </summary>
         private void cmbBox_selectServices_SelectedIndexChanged(object sender, EventArgs e)
-        {   
-            cmbBox_selectTech.Items.Clear();
+        {
+            cmbBox_selectTechnician.Items.Clear();
             PopulateSelectTechComboBox();
         }
 
@@ -204,13 +207,14 @@ namespace MechanicShop
                 {
                     double techrankValue = reader.GetDouble(4);
 
-                    if (techrankValue >= requiredRankValue) {
+                    if (techrankValue >= requiredRankValue)
+                    {
                         string firstName = reader.GetString(1);
                         string lastName = reader.GetString(2);
 
                         string fullName = $"{lastName}, {firstName}";
 
-                        cmbBox_selectTech.Items.Add(fullName);
+                        cmbBox_selectTechnician.Items.Add(fullName);
                     }
                 }
             }
@@ -226,8 +230,24 @@ namespace MechanicShop
                 ServiceTime = calendar_selectTime.Text,
                 CustomerName = cmbBox_selectCustomer.Text,
                 CustomerCar = cmbBox_selectCustomerCar.Text,
-                SelectedService = cmbBox_selectServices.Text
+                SelectedService = cmbBox_selectServices.Text,
+                SelectedTechnician = cmbBox_selectTechnician.Text,
+                Status = checkBox_Status.Checked,
             };
+
+            // Get customer Fname and Lname 
+            string fullName = appointment.CustomerName;
+            string[] names = fullName.Split(' ');
+            string customer_Fname = names[0];
+            string customer_Lname = names[1];
+
+            // Get the technicans Fname and Lname 
+            string techFullName = appointment.SelectedTechnician;
+            string[] techNames = techFullName.Split(' ');
+            string technician_Fname = techNames[0];
+            string technician_Lname = techNames[1];
+
+            // Convert bool to bit 
 
             // Have user confirm before saving
             DialogResult result = MessageBox.Show("Insert Customer into Database?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -243,17 +263,24 @@ namespace MechanicShop
                 command.Parameters.Clear();
                 SqlParameter p_serviceDate = new("@p_serviceDate", appointment.ServiceDate);
                 SqlParameter p_serviceTime = new("@p_serviceTime", appointment.ServiceTime);
-                SqlParameter p_customerName = new("@p_customerName", appointment.CustomerName);
+                SqlParameter p_customerFName = new("@p_customerFName", customer_Fname);
+                SqlParameter p_customerLName = new("@p_customerLName", customer_Lname);
                 SqlParameter p_customerCar = new("@p_customerCar", appointment.CustomerCar);
                 SqlParameter p_selectedService = new("@p_selectedService", appointment.SelectedService);
-
+                SqlParameter p_TechnicianFName = new("@p_TechnicianFName", technician_Fname);
+                SqlParameter p_TechnicianLName = new("@p_TechnicianLName", technician_Lname);
+                SqlParameter p_Status = new("@p_Status", appointment.Status);
 
                 // Add the parameters to the SqlCommand Object
                 command.Parameters.Add(p_serviceDate);
                 command.Parameters.Add(p_serviceTime);
-                command.Parameters.Add(p_customerName);
+                command.Parameters.Add(p_customerFName);
+                command.Parameters.Add(p_customerLName);
                 command.Parameters.Add(p_customerCar);
                 command.Parameters.Add(p_selectedService);
+                command.Parameters.Add(p_TechnicianFName);
+                command.Parameters.Add(p_TechnicianLName);
+                command.Parameters.Add(p_Status);
 
                 // EXEC the procedure
                 command.ExecuteNonQuery();

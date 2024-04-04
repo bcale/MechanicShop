@@ -40,15 +40,14 @@
             calendar_selectTime = new DateTimePicker();
             btn_confirmAppointment = new Button();
             btn_cancel = new Button();
-            lbl_selectTechnician = new Label();
             cmbBox_selectTechnician = new ComboBox();
-            cmbBox_selectTech = new ComboBox();
-            lbl_selectTech = new Label();
+            lbl_selectTechnician = new Label();
+            checkBox_Status = new CheckBox();
             SuspendLayout();
             // 
             // calendar_selectDate
             // 
-            calendar_selectDate.Location = new Point(284, 64);
+            calendar_selectDate.Location = new Point(284, 31);
             calendar_selectDate.Margin = new Padding(2);
             calendar_selectDate.Name = "calendar_selectDate";
             calendar_selectDate.Size = new Size(248, 27);
@@ -57,7 +56,7 @@
             // lbl_selectDateTime
             // 
             lbl_selectDateTime.AutoSize = true;
-            lbl_selectDateTime.Location = new Point(72, 67);
+            lbl_selectDateTime.Location = new Point(72, 34);
             lbl_selectDateTime.Margin = new Padding(2, 0, 2, 0);
             lbl_selectDateTime.Name = "lbl_selectDateTime";
             lbl_selectDateTime.Size = new Size(85, 20);
@@ -67,7 +66,7 @@
             // lbl_selectCustomer
             // 
             lbl_selectCustomer.AutoSize = true;
-            lbl_selectCustomer.Location = new Point(70, 194);
+            lbl_selectCustomer.Location = new Point(70, 161);
             lbl_selectCustomer.Margin = new Padding(2, 0, 2, 0);
             lbl_selectCustomer.Name = "lbl_selectCustomer";
             lbl_selectCustomer.Size = new Size(116, 20);
@@ -77,7 +76,7 @@
             // cmbBox_selectCustomer
             // 
             cmbBox_selectCustomer.FormattingEnabled = true;
-            cmbBox_selectCustomer.Location = new Point(284, 189);
+            cmbBox_selectCustomer.Location = new Point(284, 156);
             cmbBox_selectCustomer.Margin = new Padding(2);
             cmbBox_selectCustomer.Name = "cmbBox_selectCustomer";
             cmbBox_selectCustomer.Size = new Size(248, 28);
@@ -87,7 +86,7 @@
             // lbl_selectCustomerCar
             // 
             lbl_selectCustomerCar.AutoSize = true;
-            lbl_selectCustomerCar.Location = new Point(70, 255);
+            lbl_selectCustomerCar.Location = new Point(70, 222);
             lbl_selectCustomerCar.Margin = new Padding(2, 0, 2, 0);
             lbl_selectCustomerCar.Name = "lbl_selectCustomerCar";
             lbl_selectCustomerCar.Size = new Size(151, 20);
@@ -97,7 +96,7 @@
             // cmbBox_selectCustomerCar
             // 
             cmbBox_selectCustomerCar.FormattingEnabled = true;
-            cmbBox_selectCustomerCar.Location = new Point(284, 250);
+            cmbBox_selectCustomerCar.Location = new Point(284, 217);
             cmbBox_selectCustomerCar.Margin = new Padding(2);
             cmbBox_selectCustomerCar.Name = "cmbBox_selectCustomerCar";
             cmbBox_selectCustomerCar.Size = new Size(248, 28);
@@ -106,7 +105,7 @@
             // lbl_selectServices
             // 
             lbl_selectServices.AutoSize = true;
-            lbl_selectServices.Location = new Point(72, 317);
+            lbl_selectServices.Location = new Point(72, 284);
             lbl_selectServices.Margin = new Padding(2, 0, 2, 0);
             lbl_selectServices.Name = "lbl_selectServices";
             lbl_selectServices.Size = new Size(116, 20);
@@ -116,7 +115,7 @@
             // cmbBox_selectServices
             // 
             cmbBox_selectServices.FormattingEnabled = true;
-            cmbBox_selectServices.Location = new Point(284, 312);
+            cmbBox_selectServices.Location = new Point(284, 279);
             cmbBox_selectServices.Margin = new Padding(2);
             cmbBox_selectServices.Name = "cmbBox_selectServices";
             cmbBox_selectServices.Size = new Size(248, 28);
@@ -126,7 +125,7 @@
             // lbl_selectTime
             // 
             lbl_selectTime.AutoSize = true;
-            lbl_selectTime.Location = new Point(72, 136);
+            lbl_selectTime.Location = new Point(72, 103);
             lbl_selectTime.Margin = new Padding(2, 0, 2, 0);
             lbl_selectTime.Name = "lbl_selectTime";
             lbl_selectTime.Size = new Size(86, 20);
@@ -136,7 +135,7 @@
             // calendar_selectTime
             // 
             calendar_selectTime.Format = DateTimePickerFormat.Time;
-            calendar_selectTime.Location = new Point(284, 131);
+            calendar_selectTime.Location = new Point(284, 98);
             calendar_selectTime.Margin = new Padding(2);
             calendar_selectTime.Name = "calendar_selectTime";
             calendar_selectTime.ShowUpDown = true;
@@ -165,32 +164,43 @@
             btn_cancel.UseVisualStyleBackColor = true;
             btn_cancel.Click += btn_cancel_Click;
             // 
-            // cmbBox_selectTech
+            // cmbBox_selectTechnician
             // 
-            cmbBox_selectTech.FormattingEnabled = true;
-            cmbBox_selectTech.Location = new Point(284, 373);
-            cmbBox_selectTech.Margin = new Padding(2);
-            cmbBox_selectTech.Name = "cmbBox_selectTech";
-            cmbBox_selectTech.Size = new Size(248, 28);
-            cmbBox_selectTech.TabIndex = 13;
+            cmbBox_selectTechnician.FormattingEnabled = true;
+            cmbBox_selectTechnician.Location = new Point(284, 340);
+            cmbBox_selectTechnician.Margin = new Padding(2);
+            cmbBox_selectTechnician.Name = "cmbBox_selectTechnician";
+            cmbBox_selectTechnician.Size = new Size(248, 28);
+            cmbBox_selectTechnician.TabIndex = 13;
             // 
-            // lbl_selectTech
+            // lbl_selectTechnician
             // 
-            lbl_selectTech.AutoSize = true;
-            lbl_selectTech.Location = new Point(72, 378);
-            lbl_selectTech.Margin = new Padding(2, 0, 2, 0);
-            lbl_selectTech.Name = "lbl_selectTech";
-            lbl_selectTech.Size = new Size(122, 20);
-            lbl_selectTech.TabIndex = 12;
-            lbl_selectTech.Text = "Select Technician";
+            lbl_selectTechnician.AutoSize = true;
+            lbl_selectTechnician.Location = new Point(72, 345);
+            lbl_selectTechnician.Margin = new Padding(2, 0, 2, 0);
+            lbl_selectTechnician.Name = "lbl_selectTechnician";
+            lbl_selectTechnician.Size = new Size(122, 20);
+            lbl_selectTechnician.TabIndex = 12;
+            lbl_selectTechnician.Text = "Select Technician";
+            // 
+            // checkBox_Status
+            // 
+            checkBox_Status.AutoSize = true;
+            checkBox_Status.Location = new Point(72, 440);
+            checkBox_Status.Name = "checkBox_Status";
+            checkBox_Status.Size = new Size(105, 24);
+            checkBox_Status.TabIndex = 15;
+            checkBox_Status.Text = "Completed";
+            checkBox_Status.UseVisualStyleBackColor = true;
             // 
             // NewAppointmentForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(658, 509);
-            Controls.Add(cmbBox_selectTech);
-            Controls.Add(lbl_selectTech);
+            Controls.Add(checkBox_Status);
+            Controls.Add(cmbBox_selectTechnician);
+            Controls.Add(lbl_selectTechnician);
             Controls.Add(btn_cancel);
             Controls.Add(btn_confirmAppointment);
             Controls.Add(calendar_selectTime);
@@ -225,9 +235,8 @@
         private DateTimePicker calendar_selectTime;
         private Button btn_confirmAppointment;
         private Button btn_cancel;
-        private Label lbl_selectTechnician;
         private ComboBox cmbBox_selectTechnician;
-        private ComboBox cmbBox_selectTech;
-        private Label lbl_selectTech;
+        private Label lbl_selectTechnician;
+        private CheckBox checkBox_Status;
     }
 }
