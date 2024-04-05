@@ -212,7 +212,7 @@ namespace MechanicShop
                         string firstName = reader.GetString(1);
                         string lastName = reader.GetString(2);
 
-                        string fullName = $"{lastName}, {firstName}";
+                        string fullName = $"{firstName} {lastName}";
 
                         cmbBox_selectTechnician.Items.Add(fullName);
                     }
