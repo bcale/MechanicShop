@@ -56,7 +56,7 @@ CREATE TABLE service_history (
     service_id INT NOT NULL,
     technician_id INT NOT NULL,
     service_record_date date NULL,
-    service_record_time time(7) NOT NULL,
+    service_record_time time(7) NULL,
     service_record_status BIT NOT NULL,
     CONSTRAINT fk_service_history_customers_id FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
     CONSTRAINT fk_service_history_vehicles_id FOREIGN KEY (vehicle_id) REFERENCES vehicles(vehicle_id),
