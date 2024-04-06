@@ -40,7 +40,9 @@ namespace MechanicShop
 
         private void btn_Management_Click(object sender, EventArgs e)
         {
-
+            //Create an instance of New Appointment Form
+            NewAppointmentForm newAppointmentForm = new NewAppointmentForm();
+            newAppointmentForm.ShowDialog();
         }
 
         private void btn_NewService_Click(object sender, EventArgs e)
