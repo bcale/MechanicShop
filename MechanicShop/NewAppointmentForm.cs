@@ -250,7 +250,7 @@ namespace MechanicShop
             // Convert bool to bit 
 
             // Have user confirm before saving
-            DialogResult result = MessageBox.Show("Insert Customer into Database?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Insert Appointment into Database?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
@@ -284,7 +284,14 @@ namespace MechanicShop
 
                 // EXEC the procedure
                 command.ExecuteNonQuery();
-                this.Close();
+                //this.Close();
+
+                DialogResult result1 = MessageBox.Show("Would you like to add another service or technician?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result1 == DialogResult.No)
+                {
+                    this.Close();
+                }
             }
         }
 
