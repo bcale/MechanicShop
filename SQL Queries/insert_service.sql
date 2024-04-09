@@ -14,7 +14,7 @@ CREATE PROCEDURE [dbo].[insert_service]
     @p_serviceName 	VARCHAR(50),
     @p_serviceDescription 	VARCHAR(100),
     @p_serviceCost 	FLOAT,
-    @p_serviceRankRequirement VARCHAR(50)
+    @p_serviceRankRequirement FLOAT
 )
 AS
 BEGIN
