@@ -28,7 +28,7 @@ CREATE TABLE vehicles (
 
 CREATE TABLE technician_rank (
     technician_rank_id INT IDENTITY(1,1) PRIMARY KEY,
-    technician_rank NVARCHAR(10) NOT NULL,
+    technician_rank NVARCHAR(50) NOT NULL,
     rank_value FLOAT NOT NULL
 );
 
