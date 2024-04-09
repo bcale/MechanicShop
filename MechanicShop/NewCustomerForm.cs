@@ -107,6 +107,5 @@ namespace MechanicShop
                 this.Close();
             }
         }
-
     }
 }

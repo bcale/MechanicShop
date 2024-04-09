@@ -54,8 +54,16 @@ namespace MechanicShop
 
         private void btn_NewTechnician_Click(object sender, EventArgs e)
         {
+            // Create an instance of Technician form
             NewTechnicianForm addTechnicianForm = new NewTechnicianForm();
             addTechnicianForm.ShowDialog();
+        }
+
+        private void btn_NewTechRank_Click(object sender, EventArgs e)
+        {
+            // Create an instance of Technician rank form
+            NewTechRankForm addTechRankForm = new NewTechRankForm();
+            addTechRankForm.ShowDialog();
         }
     }
 }
