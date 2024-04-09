@@ -113,6 +113,7 @@
             Controls.Add(txt_rank_desc);
             Name = "NewTechRankForm";
             Text = "NewTechRankForm";
+            Load += NewTechRankForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }

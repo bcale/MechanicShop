@@ -22,9 +22,8 @@ namespace MechanicShop
         {
             public string ServiceName { get; set; } = string.Empty;
             public string ServiceDescription { get; set; } = string.Empty;
-            public float ServiceCost { get; set; } = 0;
-            public string ServiceTechReqRank { get; set; } = string.Empty;
-
+            public double ServiceCost { get; set; } = double.NaN;
+            public double ServiceTechReqRank { get; set; } = double.NaN;
         }
 
         // Establish connection
@@ -61,13 +60,25 @@ namespace MechanicShop
 
         private void btn_addService_Click(object sender, EventArgs e)
         {
+
+
+            double rankValue = double.NaN;
+            try
+            {
+                rankValue = Convert.ToDouble(cbBox_reqTechRank.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+
             // Create a new instance of the Service class and populate it with the data from the text boxes
             Service service = new Service
             {
                 ServiceName = txt_ServiceName.Text,
                 ServiceDescription = txt_ServiceDescription.Text,
                 ServiceCost = float.Parse(txt_ServiceCost.Text),
-                ServiceTechReqRank = cbBox_reqTechRank.Text,
+                ServiceTechReqRank = rankValue,
             };
 
             // Have user confirm before saving

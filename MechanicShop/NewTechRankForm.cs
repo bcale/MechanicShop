@@ -35,9 +35,9 @@ namespace MechanicShop
             {
                 rankValue = Convert.ToDouble(txt_rank_value.Text);
             }
-            catch (Exception ex) 
-            { 
-                MessageBox.Show("Error: " + ex.Message); 
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
             }
 
 
@@ -49,8 +49,8 @@ namespace MechanicShop
 
             // Have user confirm before saving
             DialogResult result = MessageBox.Show("Insert Rank into Database?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            
-            if (result == DialogResult.Yes) 
+
+            if (result == DialogResult.Yes)
             {
                 string p_insert_rank = @"dbo.[insert_rank]";
                 SqlCommand command = new SqlCommand(p_insert_rank, connection);
@@ -80,6 +80,11 @@ namespace MechanicShop
             {
                 this.Close();
             }
+        }
+
+        private void NewTechRankForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
