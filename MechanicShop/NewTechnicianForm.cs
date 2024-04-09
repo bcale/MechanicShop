@@ -32,7 +32,7 @@ namespace MechanicShop
 
         }
 
-        private void AddTechnician_Load(object sender, EventArgs e)
+        private void NewTechnicianForm_Load(object sender, EventArgs e)
         {
 
         }

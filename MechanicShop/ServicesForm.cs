@@ -38,7 +38,7 @@ namespace MechanicShop
         // Populate a ComboBox with the Techinician Ranks from the mechanicshop database
         private void PopulateTechnicianRankComboBox()
         {
-            string query = "SELECT technician_rank_id FROM technician_rank";
+            string query = "SELECT rank_value FROM technician_rank";
             SqlCommand command = new SqlCommand(query, connection);
 
             // Read the results and add each customer name to the ComboBox
@@ -48,7 +48,7 @@ namespace MechanicShop
                 {
                     // Get the string (assmued data type is string. Must be in the string format. Use a different Get method for different data types)
                     // The number passed to the method is the index of the column retrieved in the SQL query
-                    int technicianRanks = reader.GetInt32(0);
+                    double technicianRanks = reader.GetDouble(0);
 
                     // Add each customer name to the ComboBox
                     cbBox_reqTechRank.Items.Add(technicianRanks);
@@ -112,6 +112,11 @@ namespace MechanicShop
             {
                 this.Close();
             }
+        }
+
+        private void ServicesForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
