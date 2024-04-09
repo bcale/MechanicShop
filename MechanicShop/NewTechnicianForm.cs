@@ -28,7 +28,7 @@ namespace MechanicShop
         {
             InitializeComponent();
             connection = DatabaseManager.GetConnection();
-            PopulateCustomerComboBox();
+            PopulateTechRankComboBox();
 
         }
 
@@ -103,11 +103,11 @@ namespace MechanicShop
             }
         }
 
-        // Populate a ComboBox with the first and last names from the mechanicshop database
-        // format:{lastName}, {firstName}
-        private void PopulateCustomerComboBox()
+        // Populate a ComboBox with the rank value and description from the mechanicshop database
+        // format:{rank desc} - {rank value}
+        private void PopulateTechRankComboBox()
         {
-            string query = "SELECT rank_value FROM technician_rank";
+            string query = "SELECT technician_rank, rank_value FROM technician_rank";
             SqlCommand command = new SqlCommand(query, connection);
 
             // Read the results and add each customer name to the ComboBox
@@ -115,12 +115,10 @@ namespace MechanicShop
             {
                 while (reader.Read())
                 {
-                    // Get the string (assmued data type is string. Must be in the string format. Use a different Get method for different data types)
-                    // The number passed to the method is the index of the column retrieved in the SQL query
-                    double technicianRank = reader.GetDouble(0);
+                    string techRankInformation = reader.GetString(0) + " - " + reader.GetDouble(1);
 
-                    // Add each customer name to the ComboBox
-                    cmbo_technicianRank.Items.Add(technicianRank);
+
+                    cmbo_technicianRank.Items.Add(techRankInformation);
                     // Reference: https://learn.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqldatareader.getsqlstring?view=dotnet-plat-ext-8.0
                 }
                 reader.Close(); // Only one SqlDataReader per associated SqlConnection may be open at a time. Be sure to call Close()

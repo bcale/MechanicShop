@@ -36,12 +36,13 @@
             btn_technicianCancel = new Button();
             cmbo_technicianRank = new ComboBox();
             lbl_technicianRank = new Label();
+            lbl_title = new Label();
             SuspendLayout();
             // 
             // lbl_technicianFname
             // 
             lbl_technicianFname.AutoSize = true;
-            lbl_technicianFname.Location = new Point(152, 94);
+            lbl_technicianFname.Location = new Point(13, 90);
             lbl_technicianFname.Margin = new Padding(4, 0, 4, 0);
             lbl_technicianFname.Name = "lbl_technicianFname";
             lbl_technicianFname.Size = new Size(92, 25);
@@ -50,7 +51,7 @@
             // 
             // txt_technicianFname
             // 
-            txt_technicianFname.Location = new Point(360, 89);
+            txt_technicianFname.Location = new Point(221, 85);
             txt_technicianFname.Margin = new Padding(4, 5, 4, 5);
             txt_technicianFname.Name = "txt_technicianFname";
             txt_technicianFname.Size = new Size(142, 31);
@@ -58,7 +59,7 @@
             // 
             // txt_technicianLname
             // 
-            txt_technicianLname.Location = new Point(360, 154);
+            txt_technicianLname.Location = new Point(221, 150);
             txt_technicianLname.Margin = new Padding(4, 5, 4, 5);
             txt_technicianLname.Name = "txt_technicianLname";
             txt_technicianLname.Size = new Size(142, 31);
@@ -67,7 +68,7 @@
             // lbl_technicianLname
             // 
             lbl_technicianLname.AutoSize = true;
-            lbl_technicianLname.Location = new Point(152, 166);
+            lbl_technicianLname.Location = new Point(13, 162);
             lbl_technicianLname.Margin = new Padding(4, 0, 4, 0);
             lbl_technicianLname.Name = "lbl_technicianLname";
             lbl_technicianLname.Size = new Size(90, 25);
@@ -76,7 +77,7 @@
             // 
             // btn_technicianSave
             // 
-            btn_technicianSave.Location = new Point(152, 311);
+            btn_technicianSave.Location = new Point(13, 307);
             btn_technicianSave.Margin = new Padding(4, 5, 4, 5);
             btn_technicianSave.Name = "btn_technicianSave";
             btn_technicianSave.Size = new Size(108, 39);
@@ -87,7 +88,7 @@
             // 
             // btn_technicianCancel
             // 
-            btn_technicianCancel.Location = new Point(396, 311);
+            btn_technicianCancel.Location = new Point(257, 307);
             btn_technicianCancel.Margin = new Padding(4, 5, 4, 5);
             btn_technicianCancel.Name = "btn_technicianCancel";
             btn_technicianCancel.Size = new Size(108, 39);
@@ -99,7 +100,7 @@
             // cmbo_technicianRank
             // 
             cmbo_technicianRank.FormattingEnabled = true;
-            cmbo_technicianRank.Location = new Point(330, 219);
+            cmbo_technicianRank.Location = new Point(191, 215);
             cmbo_technicianRank.Margin = new Padding(4, 5, 4, 5);
             cmbo_technicianRank.Name = "cmbo_technicianRank";
             cmbo_technicianRank.Size = new Size(172, 33);
@@ -109,18 +110,29 @@
             // lbl_technicianRank
             // 
             lbl_technicianRank.AutoSize = true;
-            lbl_technicianRank.Location = new Point(152, 231);
+            lbl_technicianRank.Location = new Point(13, 227);
             lbl_technicianRank.Margin = new Padding(4, 0, 4, 0);
             lbl_technicianRank.Name = "lbl_technicianRank";
             lbl_technicianRank.Size = new Size(130, 25);
             lbl_technicianRank.TabIndex = 7;
             lbl_technicianRank.Text = "TechnicianRank";
             // 
+            // lbl_title
+            // 
+            lbl_title.AutoSize = true;
+            lbl_title.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbl_title.Location = new Point(12, 9);
+            lbl_title.Name = "lbl_title";
+            lbl_title.Size = new Size(359, 48);
+            lbl_title.TabIndex = 8;
+            lbl_title.Text = "Add a new technician";
+            // 
             // NewTechnicianForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1142, 750);
+            ClientSize = new Size(408, 386);
+            Controls.Add(lbl_title);
             Controls.Add(lbl_technicianRank);
             Controls.Add(cmbo_technicianRank);
             Controls.Add(btn_technicianCancel);
@@ -147,5 +159,6 @@
         private Button btn_technicianCancel;
         private ComboBox cmbo_technicianRank;
         private Label lbl_technicianRank;
+        private Label lbl_title;
     }
 }
