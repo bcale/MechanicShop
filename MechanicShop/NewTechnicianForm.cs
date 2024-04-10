@@ -20,10 +20,16 @@ namespace MechanicShop
         {
             public string FirstName { get; set; } = string.Empty;
             public string LastName { get; set; } = string.Empty;
-            public string TechRank { get; set; } = string.Empty;
+            public int TechRankID { get; set; } = 0;
+        }
 
+        public class Ranks
+        {
+            public int TechRankID { get; set; } = 0;
+            public double TechRank { get; set; } = double.NaN;
 
         }
+
         public NewTechnicianForm()
         {
             InitializeComponent();
@@ -39,32 +45,33 @@ namespace MechanicShop
 
         private void btn_technicianSave_Click(object sender, EventArgs e)
         {
+            // Get the selected rank from the combo box
+            string selectedRank = cmbo_technicianRank.SelectedItem.ToString();
+
+            // Get the rank ID from the dictionary based on the selected display value
+            int rankId = 0;
+            if (rankDictionary.ContainsValue(selectedRank))
+            {
+                // Find the value pair in the dictionary, if it is there, set the rank id
+                var rankKeyValuePair = rankDictionary.FirstOrDefault(pair => pair.Value == selectedRank);
+                rankId = rankKeyValuePair.Key;
+            }
+            else
+            {
+                MessageBox.Show("Selected rank information not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             Technician technician = new Technician
             {
                 FirstName = txt_technicianFname.Text,
                 LastName = txt_technicianLname.Text,
-                TechRank = cmbo_technicianRank.Text,
+                TechRankID = rankId,
             };
+
 
             // Have user confirm before saving
             DialogResult result = MessageBox.Show("Insert technician into Database?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            string query = $"SELECT technician_rank_id FROM technician_rank WHERE rank_value = {technician.TechRank}";
-            SqlCommand getRankId = new(query, connection);
-
-            // Read the results and add each customer first and last name to the ComboBox
-            int rankId = 0;
-            using (SqlDataReader reader = getRankId.ExecuteReader())
-            {
-                if (reader.Read())
-                {
-                    rankId = reader.GetInt32(0);
-                }
-                else
-                {
-                    MessageBox.Show("RankID not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
 
             if (result == DialogResult.Yes)
             {
@@ -77,7 +84,7 @@ namespace MechanicShop
                 command.Parameters.Clear();
                 SqlParameter p_FirstName = new("@p_fname", technician.FirstName);
                 SqlParameter p_LastName = new("@p_lname", technician.LastName);
-                SqlParameter p_TechRankID = new("@p_rank", rankId);
+                SqlParameter p_TechRankID = new("@p_rank", technician.TechRankID);
 
 
                 // Add the parameters to the SqlCommand Object
@@ -105,18 +112,28 @@ namespace MechanicShop
 
         // Populate a ComboBox with the rank value and description from the mechanicshop database
         // format:{rank desc} - {rank value}
+        // Use a dictionary to hold the ID values
+        private Dictionary<int, string> rankDictionary = new Dictionary<int, string>();
         private void PopulateTechRankComboBox()
         {
-            string query = "SELECT technician_rank, rank_value FROM technician_rank";
+            string query = "SELECT * FROM technician_rank";
             SqlCommand command = new SqlCommand(query, connection);
+
+            // Clear existing items in the combo box and the dictionary
+            cmbo_technicianRank.Items.Clear();
+            rankDictionary.Clear(); 
 
             // Read the results and add each customer name to the ComboBox
             using (SqlDataReader reader = command.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    string techRankInformation = reader.GetString(0) + " - " + reader.GetDouble(1);
+                    int techRankID = reader.GetInt32(0);
+                    double techRankValue = reader.GetDouble(2);
+                    string techRankInformation = $"{reader.GetString(1)} - {techRankValue}";
 
+                    // Add the rank ID and its associated value to the dictionary
+                    rankDictionary.Add(techRankID, techRankInformation);
 
                     cmbo_technicianRank.Items.Add(techRankInformation);
                     // Reference: https://learn.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqldatareader.getsqlstring?view=dotnet-plat-ext-8.0
