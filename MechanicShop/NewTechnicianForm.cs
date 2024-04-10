@@ -23,13 +23,6 @@ namespace MechanicShop
             public int TechRankID { get; set; } = 0;
         }
 
-        public class Ranks
-        {
-            public int TechRankID { get; set; } = 0;
-            public double TechRank { get; set; } = double.NaN;
-
-        }
-
         public NewTechnicianForm()
         {
             InitializeComponent();

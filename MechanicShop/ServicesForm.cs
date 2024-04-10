@@ -23,7 +23,7 @@ namespace MechanicShop
             public string ServiceName { get; set; } = string.Empty;
             public string ServiceDescription { get; set; } = string.Empty;
             public double ServiceCost { get; set; } = double.NaN;
-            public double ServiceTechReqRank { get; set; } = double.NaN;
+            public int ServiceTechReqRankID { get; set; } = 0;
         }
 
         // Establish connection
@@ -35,41 +35,52 @@ namespace MechanicShop
         }
 
         // Populate a ComboBox with the Techinician Ranks from the mechanicshop database
+        // Use a dictionary to hold the ID values
+        private Dictionary<int, string> rankDictionary = new Dictionary<int, string>();
         private void PopulateTechnicianRankComboBox()
         {
-            string query = "SELECT rank_value FROM technician_rank";
+            string query = "SELECT * FROM technician_rank";
             SqlCommand command = new SqlCommand(query, connection);
+
+            // Clear existing items in the combo box and the dictionary
+            cbBox_reqTechRank.Items.Clear();
+            rankDictionary.Clear();
 
             // Read the results and add each customer name to the ComboBox
             using (SqlDataReader reader = command.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    // Get the string (assmued data type is string. Must be in the string format. Use a different Get method for different data types)
-                    // The number passed to the method is the index of the column retrieved in the SQL query
-                    double technicianRanks = reader.GetDouble(0);
+                    int techRankID = reader.GetInt32(0);
+                    double techRankValue = reader.GetDouble(2);
+                    string techRankInformation = $"{reader.GetString(1)} - {techRankValue}";
 
-                    // Add each customer name to the ComboBox
-                    cbBox_reqTechRank.Items.Add(technicianRanks);
-                    // Reference: https://learn.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqldatareader.getsqlstring?view=dotnet-plat-ext-8.0
+                    // Add the rank ID and its associated value to the dictionary
+                    rankDictionary.Add(techRankID, techRankInformation);
+
+                    cbBox_reqTechRank.Items.Add(techRankInformation);
                 }
-                reader.Close(); // Only one SqlDataReader per associated SqlConnection may be open at a time. Be sure to call Close()
+                reader.Close();
             }
-        } // Reference: https://learn.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqldatareader.read?view=dotnet-plat-ext-8.0
-
+        }
 
         private void btn_addService_Click(object sender, EventArgs e)
         {
+            // Get the selected rank from the combo box
+            string selectedRank = cbBox_reqTechRank.SelectedItem.ToString();
 
-
-            double rankValue = double.NaN;
-            try
+            // Get the rank ID from the dictionary based on the selected display value
+            int rankId = 0;
+            if (rankDictionary.ContainsValue(selectedRank))
             {
-                rankValue = Convert.ToDouble(cbBox_reqTechRank.Text);
+                // Find the value pair in the dictionary, if it is there, set the rank id
+                var rankKeyValuePair = rankDictionary.FirstOrDefault(pair => pair.Value == selectedRank);
+                rankId = rankKeyValuePair.Key;
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("Selected rank information not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             // Create a new instance of the Service class and populate it with the data from the text boxes
@@ -78,7 +89,7 @@ namespace MechanicShop
                 ServiceName = txt_ServiceName.Text,
                 ServiceDescription = txt_ServiceDescription.Text,
                 ServiceCost = float.Parse(txt_ServiceCost.Text),
-                ServiceTechReqRank = rankValue,
+                ServiceTechReqRankID = rankId,
             };
 
             // Have user confirm before saving
@@ -96,7 +107,7 @@ namespace MechanicShop
                 SqlParameter p_ServiceName = new("@p_serviceName", service.ServiceName);
                 SqlParameter p_ServiceDescription = new("@p_serviceDescription", service.ServiceDescription);
                 SqlParameter p_ServiceCost = new("@p_serviceCost", service.ServiceCost);
-                SqlParameter p_ServiceRankRequirement = new("@p_serviceRankRequirement", service.ServiceTechReqRank);
+                SqlParameter p_ServiceRankRequirement = new("@p_serviceRankRequirement", service.ServiceTechReqRankID);
 
 
                 // Add the parameters to the SqlCommand Object
@@ -104,7 +115,6 @@ namespace MechanicShop
                 command.Parameters.Add(p_ServiceDescription);
                 command.Parameters.Add(p_ServiceCost);
                 command.Parameters.Add(p_ServiceRankRequirement);
-
 
 
                 // EXEC the procedure
