@@ -65,5 +65,6 @@ namespace MechanicShop
             NewTechRankForm addTechRankForm = new NewTechRankForm();
             addTechRankForm.ShowDialog();
         }
+
     }
 }
