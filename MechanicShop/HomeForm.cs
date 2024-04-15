@@ -66,5 +66,10 @@ namespace MechanicShop
             addTechRankForm.ShowDialog();
         }
 
+        private void btn_manageServices_Click(object sender, EventArgs e)
+        {
+            ManagementForm managementForm = new ManagementForm();
+            managementForm.ShowDialog();
+        }
     }
 }

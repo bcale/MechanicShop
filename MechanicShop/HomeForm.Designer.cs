@@ -122,6 +122,7 @@
             btn_manageServices.TabIndex = 7;
             btn_manageServices.Text = "Manage Services";
             btn_manageServices.UseVisualStyleBackColor = true;
+            btn_manageServices.Click += btn_manageServices_Click;
             // 
             // HomeForm
             // 
