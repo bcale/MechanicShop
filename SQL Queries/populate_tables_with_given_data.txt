@@ -1,0 +1,55 @@
+-- Delete existing data from the service_history table
+DELETE FROM service_history;
+
+-- Delete existing data from the services table
+DELETE FROM services;
+
+-- Delete existing data from the technicians table
+DELETE FROM technicians;
+
+-- Delete existing data from the vehicles table
+DELETE FROM vehicles;
+
+-- Delete existing data from the customers table
+DELETE FROM customers;
+
+-- Delete existing data from the technician_rank table
+DELETE FROM technician_rank;
+
+-- Inserting data into the customers table
+INSERT INTO customers (customer_Fname, customer_Lname, customer_phone, customer_city, customer_street, customer_apartment_number, customer_state, customer_zip, customer_email)
+VALUES ('Jacob', 'Smith', '1234567890', 'City1', 'Street1', 'Apt1', 'ST', '12345', 'jacob@example.com'),
+       ('Sherry', 'Jones', '2345678901', 'City2', 'Street2', 'Apt2', 'ST', '23456', 'sherry@example.com'),
+       ('Jennifer', 'Johnson', '3456789012', 'City3', 'Street3', 'Apt3', 'ST', '34567', 'jennifer@example.com');
+
+-- Inserting data into the technician_rank table
+INSERT INTO technician_rank (technician_rank, rank_value)
+VALUES ('Junior Technician', 1.0),
+       ('Senior Technician', 2.0);
+
+-- Inserting data into the vehicles table
+INSERT INTO vehicles (customer_id, vehicle_model, vehicle_trim, vehicle_year, vehicle_license_plate, vehicle_color, vehicle_vin, vehicle_make)
+VALUES (1, 'Model1', 'Trim1', '2020', 'KW123', 'Red', 'VIN1', 'Make1'),
+       (1, 'Model2', 'Trim2', '2021', '9H277', 'Blue', 'VIN2', 'Make2'),
+       (2, 'Model3', 'Trim3', '2019', '2022Y6', 'Green', 'VIN3', 'Make3'),
+       (3, 'Model4', 'Trim4', '2018', 'S3E246', 'Black', 'VIN4', 'Make4'),
+       (3, 'Model5', 'Trim5', '2017', 'D68G67', 'White', 'VIN5', 'Make5'),
+       (3, 'Model6', 'Trim6', '2016', 'KQ963', 'Silver', 'VIN6', 'Make6');
+
+-- Inserting data into the technicians table
+INSERT INTO technicians (technician_Fname, technician_Lname, technician_rank_id)
+VALUES ('Daniel', 'Hogan', 1),
+       ('Margery', 'Hope', 2);
+
+-- Inserting data into the services table
+INSERT INTO services (service_name, service_description, service_cost, required_technician_rank_id)
+VALUES ('Oil Change', 'Change engine oil and oil filter', 49.99, 1),
+       ('Tire Rotation', 'Rotate tires to ensure even wear', 10.50, 1),
+       ('Brake Pads', 'Replace worn brake pads', 125.99, 2),
+       ('Inspection', 'Perform vehicle inspection', 59.00, 2);
+
+-- Inserting data into the service_history table
+INSERT INTO service_history (customer_id, vehicle_id, service_id, technician_id, service_record_date, service_record_time, service_record_status)
+VALUES (3, 5, 3, 1, '2024-05-03', '11:00:00', 1),
+       (2, 3, 4, 2, '2024-05-03', '13:00:00', 1);
+
