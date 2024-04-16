@@ -35,6 +35,7 @@
             btn_NewTechnician = new Button();
             btn_NewService = new Button();
             btn_NewTechRank = new Button();
+
             SuspendLayout();
             // 
             // btn_MakeAppointment
@@ -62,10 +63,11 @@
             // label1
             // 
             label1.AutoSize = true;
+
             label1.Location = new Point(172, 370);
             label1.Margin = new Padding(5, 0, 5, 0);
             label1.Name = "label1";
-            label1.Size = new Size(290, 25);
+            label1.Size = new Size(246, 20);
             label1.TabIndex = 2;
             label1.Text = "Careful Technicians Collaborating ™";
             // 
@@ -113,9 +115,19 @@
             btn_NewTechRank.UseVisualStyleBackColor = true;
             btn_NewTechRank.Click += btn_NewTechRank_Click;
             // 
+            // btn_serviceHistory
+            // 
+            btn_serviceHistory.Location = new Point(199, 210);
+            btn_serviceHistory.Name = "btn_serviceHistory";
+            btn_serviceHistory.Size = new Size(181, 53);
+            btn_serviceHistory.TabIndex = 6;
+            btn_serviceHistory.Text = "Service History";
+            btn_serviceHistory.UseVisualStyleBackColor = true;
+            btn_serviceHistory.Click += btn_serviceHistory_Click;
+            // 
             // HomeForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(485, 398);
             Controls.Add(btn_NewTechRank);
