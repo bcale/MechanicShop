@@ -1,0 +1,33 @@
+USE [MechanicShop]
+GO
+/****** Object:  UserDefinedFunction [dbo].[list_service_amount]    Script Date: 4/16/2024 3:32:19 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Cameron
+-- Create date: 4/16/2024
+-- Description:	List how many times services were done over a timeframe
+-- =============================================
+CREATE FUNCTION [dbo].[list_service_amount]
+(	
+	-- Add the parameters for the function here
+	@p_ServName nvarchar(20),
+	@p_Date1 date,
+	@p_Date2 date
+	
+)
+RETURNS TABLE 
+AS
+RETURN 
+(
+	SELECT Count(service_name)as 'amount performed',service_record_date  from services join service_history 
+	on services.service_id = service_history.service_id
+	where service_record_date between @p_Date1 and @p_Date2 and service_name = @p_ServName
+	group by service_record_date
+)
+--TEST WITH
+--declare @t as date; select @t = service_record_date from service_history where service_record_id=14
+--declare @e as date; select @e = service_record_date from service_history where service_record_id=18
+--select * from [dbo].[list_service_amount]('Brake Pads',@t,@e);
