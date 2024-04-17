@@ -30,11 +30,11 @@
         {
             label1 = new Label();
             label2 = new Label();
-            radioButton1 = new RadioButton();
+            rdBtn_Date = new RadioButton();
             btn_submit = new Button();
             btn_cancel = new Button();
-            radioButton2 = new RadioButton();
-            radioButton3 = new RadioButton();
+            rdBtn_service_date = new RadioButton();
+            rdBtn_cost_date = new RadioButton();
             dateTimePicker1 = new DateTimePicker();
             dateTimePicker2 = new DateTimePicker();
             label3 = new Label();
@@ -44,15 +44,15 @@
             dateTimePicker4 = new DateTimePicker();
             label5 = new Label();
             dateTimePicker5 = new DateTimePicker();
-            radioButton4 = new RadioButton();
+            rdBtn_technician_date = new RadioButton();
             cbBox_technicians = new ComboBox();
             label6 = new Label();
             dateTimePicker6 = new DateTimePicker();
             label7 = new Label();
             dateTimePicker7 = new DateTimePicker();
-            radioButton5 = new RadioButton();
+            rdBtn_customer = new RadioButton();
             cbBox_customers = new ComboBox();
-            radioButton6 = new RadioButton();
+            rdBtn_tech_noService = new RadioButton();
             SuspendLayout();
             // 
             // label1
@@ -75,17 +75,17 @@
             label2.TabIndex = 1;
             label2.Text = "Select Management Options";
             // 
-            // radioButton1
+            // rdBtn_Date
             // 
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(7, 69);
-            radioButton1.Margin = new Padding(2);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(156, 24);
-            radioButton1.TabIndex = 2;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "Data for Given Day";
-            radioButton1.UseVisualStyleBackColor = true;
+            rdBtn_Date.AutoSize = true;
+            rdBtn_Date.Location = new Point(7, 69);
+            rdBtn_Date.Margin = new Padding(2);
+            rdBtn_Date.Name = "rdBtn_Date";
+            rdBtn_Date.Size = new Size(156, 24);
+            rdBtn_Date.TabIndex = 2;
+            rdBtn_Date.TabStop = true;
+            rdBtn_Date.Text = "Data for Given Day";
+            rdBtn_Date.UseVisualStyleBackColor = true;
             // 
             // btn_submit
             // 
@@ -109,29 +109,29 @@
             btn_cancel.UseVisualStyleBackColor = true;
             btn_cancel.Click += btn_cancel_Click;
             // 
-            // radioButton2
+            // rdBtn_service_date
             // 
-            radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(7, 119);
-            radioButton2.Margin = new Padding(2);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(153, 24);
-            radioButton2.TabIndex = 5;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "Number of Service";
-            radioButton2.UseVisualStyleBackColor = true;
+            rdBtn_service_date.AutoSize = true;
+            rdBtn_service_date.Location = new Point(7, 119);
+            rdBtn_service_date.Margin = new Padding(2);
+            rdBtn_service_date.Name = "rdBtn_service_date";
+            rdBtn_service_date.Size = new Size(153, 24);
+            rdBtn_service_date.TabIndex = 5;
+            rdBtn_service_date.TabStop = true;
+            rdBtn_service_date.Text = "Number of Service";
+            rdBtn_service_date.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // rdBtn_cost_date
             // 
-            radioButton3.AutoSize = true;
-            radioButton3.Location = new Point(7, 168);
-            radioButton3.Margin = new Padding(2);
-            radioButton3.Name = "radioButton3";
-            radioButton3.Size = new Size(208, 24);
-            radioButton3.TabIndex = 6;
-            radioButton3.TabStop = true;
-            radioButton3.Text = "Total Service Cost Between";
-            radioButton3.UseVisualStyleBackColor = true;
+            rdBtn_cost_date.AutoSize = true;
+            rdBtn_cost_date.Location = new Point(7, 168);
+            rdBtn_cost_date.Margin = new Padding(2);
+            rdBtn_cost_date.Name = "rdBtn_cost_date";
+            rdBtn_cost_date.Size = new Size(208, 24);
+            rdBtn_cost_date.TabIndex = 6;
+            rdBtn_cost_date.TabStop = true;
+            rdBtn_cost_date.Text = "Total Service Cost Between";
+            rdBtn_cost_date.UseVisualStyleBackColor = true;
             // 
             // dateTimePicker1
             // 
@@ -212,17 +212,17 @@
             dateTimePicker5.Size = new Size(248, 27);
             dateTimePicker5.TabIndex = 15;
             // 
-            // radioButton4
+            // rdBtn_technician_date
             // 
-            radioButton4.AutoSize = true;
-            radioButton4.Location = new Point(7, 219);
-            radioButton4.Margin = new Padding(2);
-            radioButton4.Name = "radioButton4";
-            radioButton4.Size = new Size(182, 24);
-            radioButton4.TabIndex = 16;
-            radioButton4.TabStop = true;
-            radioButton4.Text = "Services performed by ";
-            radioButton4.UseVisualStyleBackColor = true;
+            rdBtn_technician_date.AutoSize = true;
+            rdBtn_technician_date.Location = new Point(7, 219);
+            rdBtn_technician_date.Margin = new Padding(2);
+            rdBtn_technician_date.Name = "rdBtn_technician_date";
+            rdBtn_technician_date.Size = new Size(182, 24);
+            rdBtn_technician_date.TabIndex = 16;
+            rdBtn_technician_date.TabStop = true;
+            rdBtn_technician_date.Text = "Services performed by ";
+            rdBtn_technician_date.UseVisualStyleBackColor = true;
             // 
             // cbBox_technicians
             // 
@@ -269,17 +269,17 @@
             dateTimePicker7.Size = new Size(248, 27);
             dateTimePicker7.TabIndex = 21;
             // 
-            // radioButton5
+            // rdBtn_customer
             // 
-            radioButton5.AutoSize = true;
-            radioButton5.Location = new Point(7, 266);
-            radioButton5.Margin = new Padding(2);
-            radioButton5.Name = "radioButton5";
-            radioButton5.Size = new Size(321, 24);
-            radioButton5.TabIndex = 22;
-            radioButton5.TabStop = true;
-            radioButton5.Text = "Services Scheduled/Performed for Customer";
-            radioButton5.UseVisualStyleBackColor = true;
+            rdBtn_customer.AutoSize = true;
+            rdBtn_customer.Location = new Point(7, 266);
+            rdBtn_customer.Margin = new Padding(2);
+            rdBtn_customer.Name = "rdBtn_customer";
+            rdBtn_customer.Size = new Size(321, 24);
+            rdBtn_customer.TabIndex = 22;
+            rdBtn_customer.TabStop = true;
+            rdBtn_customer.Text = "Services Scheduled/Performed for Customer";
+            rdBtn_customer.UseVisualStyleBackColor = true;
             // 
             // cbBox_customers
             // 
@@ -290,32 +290,32 @@
             cbBox_customers.Size = new Size(150, 28);
             cbBox_customers.TabIndex = 23;
             // 
-            // radioButton6
+            // rdBtn_tech_noService
             // 
-            radioButton6.AutoSize = true;
-            radioButton6.Location = new Point(7, 317);
-            radioButton6.Margin = new Padding(2);
-            radioButton6.Name = "radioButton6";
-            radioButton6.Size = new Size(347, 24);
-            radioButton6.TabIndex = 24;
-            radioButton6.TabStop = true;
-            radioButton6.Text = "Display Technicians with No Services Conducted";
-            radioButton6.UseVisualStyleBackColor = true;
+            rdBtn_tech_noService.AutoSize = true;
+            rdBtn_tech_noService.Location = new Point(7, 317);
+            rdBtn_tech_noService.Margin = new Padding(2);
+            rdBtn_tech_noService.Name = "rdBtn_tech_noService";
+            rdBtn_tech_noService.Size = new Size(347, 24);
+            rdBtn_tech_noService.TabIndex = 24;
+            rdBtn_tech_noService.TabStop = true;
+            rdBtn_tech_noService.Text = "Display Technicians with No Services Conducted";
+            rdBtn_tech_noService.UseVisualStyleBackColor = true;
             // 
             // ManagementForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1037, 454);
-            Controls.Add(radioButton6);
+            Controls.Add(rdBtn_tech_noService);
             Controls.Add(cbBox_customers);
-            Controls.Add(radioButton5);
+            Controls.Add(rdBtn_customer);
             Controls.Add(dateTimePicker7);
             Controls.Add(label7);
             Controls.Add(dateTimePicker6);
             Controls.Add(label6);
             Controls.Add(cbBox_technicians);
-            Controls.Add(radioButton4);
+            Controls.Add(rdBtn_technician_date);
             Controls.Add(dateTimePicker5);
             Controls.Add(label5);
             Controls.Add(dateTimePicker4);
@@ -325,11 +325,11 @@
             Controls.Add(label3);
             Controls.Add(dateTimePicker2);
             Controls.Add(dateTimePicker1);
-            Controls.Add(radioButton3);
-            Controls.Add(radioButton2);
+            Controls.Add(rdBtn_cost_date);
+            Controls.Add(rdBtn_service_date);
             Controls.Add(btn_cancel);
             Controls.Add(btn_submit);
-            Controls.Add(radioButton1);
+            Controls.Add(rdBtn_Date);
             Controls.Add(label2);
             Controls.Add(label1);
             Margin = new Padding(2);
@@ -344,11 +344,11 @@
 
         private Label label1;
         private Label label2;
-        private RadioButton radioButton1;
+        private RadioButton rdBtn_Date;
         private Button btn_submit;
         private Button btn_cancel;
-        private RadioButton radioButton2;
-        private RadioButton radioButton3;
+        private RadioButton rdBtn_service_date;
+        private RadioButton rdBtn_cost_date;
         private DateTimePicker dateTimePicker1;
         private DateTimePicker dateTimePicker2;
         private Label label3;
@@ -358,14 +358,14 @@
         private DateTimePicker dateTimePicker4;
         private Label label5;
         private DateTimePicker dateTimePicker5;
-        private RadioButton radioButton4;
+        private RadioButton rdBtn_technician_date;
         private ComboBox cbBox_technicians;
         private Label label6;
         private DateTimePicker dateTimePicker6;
         private Label label7;
         private DateTimePicker dateTimePicker7;
-        private RadioButton radioButton5;
+        private RadioButton rdBtn_customer;
         private ComboBox cbBox_customers;
-        private RadioButton radioButton6;
+        private RadioButton rdBtn_tech_noService;
     }
 }

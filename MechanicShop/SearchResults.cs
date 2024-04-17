@@ -12,7 +12,7 @@ namespace MechanicShop
 {
     public partial class SearchResults : Form
     {
-        public SearchResults()
+        public SearchResults(RadioButton checkedButton)
         {
             InitializeComponent();
         }
@@ -20,6 +20,13 @@ namespace MechanicShop
         private void SearchResults_Load(object sender, EventArgs e)
         {
 
+            // TO DO: Switch statement to process which function to call to produce the correct query
+
+        }
+
+        private void btn_close_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

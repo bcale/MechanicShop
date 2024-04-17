@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace MechanicShop
 {
@@ -84,13 +85,15 @@ namespace MechanicShop
 
         private void btn_submit_Click(object sender, EventArgs e)
         {
-            SearchResults SearchResults = new SearchResults();
+            var checkedButton = Controls.OfType<RadioButton>().FirstOrDefault(radioButton => radioButton.Checked);
+
+            SearchResults SearchResults = new SearchResults(checkedButton);
             SearchResults.Show();
         }
 
         private void btn_cancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 }
