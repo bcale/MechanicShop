@@ -284,7 +284,6 @@ namespace MechanicShop
 
                 // EXEC the procedure
                 command.ExecuteNonQuery();
-                //this.Close();
 
                 DialogResult result1 = MessageBox.Show("Would you like to add another service or technician?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
