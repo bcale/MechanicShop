@@ -89,6 +89,60 @@ namespace MechanicShop
 
             SearchResults SearchResults = new SearchResults(checkedButton);
             SearchResults.Show();
+
+            if(rdBtn_service_date.Checked)
+            {
+                
+
+                string Service = cbBox_services.Text;
+                //DateTime ServiceDate1 = dateTimePicker4.D;
+                //DateTime ServiceDate2 = dateTimePicker5.MaxDate;
+                String ServiceDate1 = dateTimePicker4.Text;
+                string ServiceDate2 = dateTimePicker5.Text;
+                //DateTime dt;
+                //DateTime dt2;
+
+                
+
+                string functionName = @"dbo.[list_service_amount]";
+
+                    using (SqlCommand command = new SqlCommand($"SELECT * FROM {functionName}(@p_ServName, @p_date1, @p_date2)", connection))
+                    {
+
+                        // Set SQL Parameters
+                        command.Parameters.Clear();
+                    SqlParameter p_ServName = new SqlParameter("@p_ServName", Service);
+                    // SqlParameter p_Date1 = new SqlParameter("@p_date1", DateTime.TryParse(ServiceDate1, out dt));
+                    //SqlParameter p_Date2 = new SqlParameter("@p_date2", DateTime.TryParse(ServiceDate2, out dt2));
+                    // SqlParameter p_Date2 = new SqlParameter("@p_date2", ServiceDate2);
+                    // SqlParameter p_Date1 = new SqlParameter("@p_date1", dateTimePicker4.Date);
+                    SqlParameter p_Date1 = new SqlParameter("@p_date1", dateTimePicker4.Text);
+                    SqlParameter p_Date2 = new SqlParameter("@p_date2", dateTimePicker5.Text);
+
+
+                    // Add the parameters to the SqlCommand Object
+                    command.Parameters.Add(p_ServName);
+                    command.Parameters.Add(p_Date1);
+                        command.Parameters.Add(p_Date2);
+
+                        // Create new objects to execute the command
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable dataTable = new DataTable();
+
+                        try
+                        {
+                            // Fill the data grid
+                            adapter.Fill(dataTable);
+                            dataGridView1.DataSource = dataTable;
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error: " + ex.Message);
+                        }
+                    }
+                
+
+            }
         }
 
         private void btn_cancel_Click(object sender, EventArgs e)
