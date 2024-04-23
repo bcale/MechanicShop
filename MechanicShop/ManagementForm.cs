@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using static MechanicShop.NewAppointmentForm;
 using static MechanicShop.ServicesForm;
 
 namespace MechanicShop
@@ -129,15 +130,57 @@ namespace MechanicShop
                     }
             }
 
-            if (rdBtn_cost_date.Checked)
+            if (rdBtn_technician_date.Checked)
             {                
+                string functionName = @"dbo.[jobs_tech_assigned]";
+
+                string techFullName = cbBox_technicians.Text;
+                string[] techNames = techFullName.Split(' ');
+                string technician_Fname = techNames[0];
+                string technician_Lname = techNames[1];
+
+                using (SqlCommand command = new SqlCommand($"SELECT * FROM {functionName}(@p_techFname,@p_techLname,@p_date1, @p_date2) order by vehicle_license_plate", connection))
+                {
+
+                    // Set SQL Parameters
+                    command.Parameters.Clear();
+                    SqlParameter p_TechFName = new SqlParameter("@p_techFname", technician_Fname);
+                    SqlParameter p_TechLName = new SqlParameter("@p_techLname", technician_Lname);
+
+                    SqlParameter p_Date1 = new SqlParameter("@p_date1", dateTimePicker6.Text);
+                    SqlParameter p_Date2 = new SqlParameter("@p_date2", dateTimePicker7.Text);
+                    // Add the parameters to the SqlCommand Object
+                    command.Parameters.Add(p_TechFName);
+                    command.Parameters.Add(p_TechLName);
+                    command.Parameters.Add(p_Date1);
+                    command.Parameters.Add(p_Date2);
+
+                    // Create new objects to execute the command
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+
+                    try
+                    {
+                        // Fill the data grid
+                        adapter.Fill(dataTable);
+                        dataGridView1.DataSource = dataTable;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }         
+        }
+
+            if (rdBtn_cost_date.Checked)
+            {
                 string functionName = @"dbo.[total_cost]";
 
                 using (SqlCommand command = new SqlCommand($"SELECT * FROM {functionName}(@p_date1, @p_date2)", connection))
                 {
 
                     // Set SQL Parameters
-                    command.Parameters.Clear();                    
+                    command.Parameters.Clear();
                     SqlParameter p_Date1 = new SqlParameter("@p_date1", dateTimePicker2.Text);
                     SqlParameter p_Date2 = new SqlParameter("@p_date2", dateTimePicker3.Text);
                     // Add the parameters to the SqlCommand Object
@@ -158,8 +201,8 @@ namespace MechanicShop
                     {
                         MessageBox.Show("Error: " + ex.Message);
                     }
-                }         
-        }
+                }
+            }
         }
 
         private void btn_cancel_Click(object sender, EventArgs e)
