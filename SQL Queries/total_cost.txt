@@ -1,0 +1,29 @@
+USE [MechanicShop]
+GO
+/****** Object:  UserDefinedFunction [dbo].[list_service_amount]    Script Date: 4/23/2024 11:10:48 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Cameron
+-- Create date: 4/23/2024
+-- Description:	List how many times services were done over a timeframe
+-- =============================================
+CREATE FUNCTION [dbo].[total_cost]
+(	
+	-- Add the parameters for the function here
+	@p_Date1 datetime,
+	@p_Date2 datetime
+)
+RETURNS TABLE 
+AS
+RETURN 
+(
+	SELECT sum(service_cost) as 'Total cost of services between these dates' from services join service_history 
+	on services.service_id = service_history.service_id
+	where service_record_date between @p_Date1 and @p_Date2
+)
+--declare @t as date; select @t = service_record_date from service_history where service_record_id=14
+--declare @e as date; select @e = service_record_date from service_history where service_record_id=18
+--select * from [dbo].[total_cost](@t,@e);
