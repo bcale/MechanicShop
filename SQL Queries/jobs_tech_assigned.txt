@@ -1,0 +1,37 @@
+USE [MechanicShop]
+GO
+/****** Object:  UserDefinedFunction [dbo].[jobs_tech_assigned]    Script Date: 4/23/2024 1:38:12 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Cameron
+-- Create date: 4/23/2024
+-- Description:	List how many times services were done over a timeframe
+-- =============================================
+ALTER FUNCTION [dbo].[jobs_tech_assigned]
+(	
+	@p_TechFName nvarchar(20),
+	@p_TechLName nvarchar(20),
+	@p_Date1 datetime,
+	@p_Date2 datetime
+	
+)
+RETURNS TABLE 
+AS
+RETURN 
+(
+	select service_name,vehicle_license_plate,customer_Fname+' '+customer_Lname as 'customer name', service_record_date
+	from technicians 
+	join service_history on technicians.technician_id = service_history.technician_id
+	join vehicles on service_history.vehicle_id = vehicles.vehicle_id
+	join services on service_history.service_id = services.service_id
+	join customers on service_history.customer_id = customers.customer_id
+	where service_record_date between @p_Date1 and @p_Date2 and technician_Fname = @p_TechFName and technician_Lname = @p_TechLName
+	--group by vehicle_license_plate
+)
+--declare @t as date; select @t = service_record_date from service_history where service_record_id=14
+--declare @e as date; select @e = service_record_date from service_history where service_record_id=23
+--select * from [dbo].[jobs_tech_assigned]('Daniel','Hogan',@t,@e)
+--order by vehicle_license_plate
