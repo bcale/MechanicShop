@@ -239,11 +239,38 @@ namespace MechanicShop
                     }
                 }
             }
+
+            //View Technician names who have done no work 
+            if (rdBtn_tech_noService.Checked)
+            {
+                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.Lazy_Technicians()", connection))
+                {
+                    // Create a DataTable to hold the result set
+                    // Create new objects to execute the command
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+
+                    try
+                    {
+                        // Fill the data grid
+                        adapter.Fill(dataTable);
+                        dataGridView1.DataSource = dataTable;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }
+            }
+
+
         }
 
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             Close();
         }
+
+  
     }
 }
