@@ -84,25 +84,61 @@ namespace MechanicShop
                 cbBox_technicians.Items.Add(technicianName);
             }
         }
-
+        /// End Combo Boxes -------------------------------------------------------------------------
+      
+        
         private void btn_submit_Click(object sender, EventArgs e)
         {
             var checkedButton = Controls.OfType<RadioButton>().FirstOrDefault(radioButton => radioButton.Checked);
 
             SearchResults SearchResults = new SearchResults(checkedButton);
             SearchResults.Show();
+            
+            if (rdBtn_Date.Checked)
+            {
+                string functionName = @"search_serviceHistory_byDate";
 
-            if(rdBtn_service_date.Checked)
+                using (SqlCommand command = new SqlCommand($"SELECT * FROM {functionName}(@p_date) " +
+                                                           $"GROUP BY vehicle_license_plate" +
+                                                           $"ORDER BY service_record_time", connection))
+                {
+
+                    // Set SQL Parameters
+                    command.Parameters.Clear();
+
+                    SqlParameter p_date = new SqlParameter("@p_date", dateTimePicker1.Text);
+
+                    // Add the parameters to the SqlCommand Object
+                    command.Parameters.Add(p_date);
+
+                    // Create new objects to execute the command
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+
+                    try
+                    {
+                        // Fill the data grid
+                        adapter.Fill(dataTable);
+                        dataGridView1.DataSource = dataTable;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }
+            }
+
+            if (rdBtn_service_date.Checked)
             {
                 string Service = cbBox_services.Text;
 
                 string functionName = @"dbo.[list_service_amount]";
 
-                    using (SqlCommand command = new SqlCommand($"SELECT * FROM {functionName}(@p_ServName, @p_date1, @p_date2)", connection))
-                    {
+                using (SqlCommand command = new SqlCommand($"SELECT * FROM {functionName}(@p_ServName, @p_date1, @p_date2)", connection))
+                {
 
-                        // Set SQL Parameters
-                        command.Parameters.Clear();
+                    // Set SQL Parameters
+                    command.Parameters.Clear();
                     SqlParameter p_ServName = new SqlParameter("@p_ServName", Service);
                     SqlParameter p_Date1 = new SqlParameter("@p_date1", dateTimePicker4.Text);
                     SqlParameter p_Date2 = new SqlParameter("@p_date2", dateTimePicker5.Text);
@@ -111,27 +147,27 @@ namespace MechanicShop
                     // Add the parameters to the SqlCommand Object
                     command.Parameters.Add(p_ServName);
                     command.Parameters.Add(p_Date1);
-                        command.Parameters.Add(p_Date2);
+                    command.Parameters.Add(p_Date2);
 
-                        // Create new objects to execute the command
-                        SqlDataAdapter adapter = new SqlDataAdapter(command);
-                        DataTable dataTable = new DataTable();
+                    // Create new objects to execute the command
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
 
-                        try
-                        {
-                            // Fill the data grid
-                            adapter.Fill(dataTable);
-                            dataGridView1.DataSource = dataTable;
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Error: " + ex.Message);
-                        }
+                    try
+                    {
+                        // Fill the data grid
+                        adapter.Fill(dataTable);
+                        dataGridView1.DataSource = dataTable;
                     }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }
             }
 
             if (rdBtn_technician_date.Checked)
-            {                
+            {
                 string functionName = @"dbo.[jobs_tech_assigned]";
 
                 string techFullName = cbBox_technicians.Text;
@@ -169,8 +205,8 @@ namespace MechanicShop
                     {
                         MessageBox.Show("Error: " + ex.Message);
                     }
-                }         
-        }
+                }
+            }
 
             if (rdBtn_cost_date.Checked)
             {
