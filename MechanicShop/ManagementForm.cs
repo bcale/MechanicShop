@@ -300,6 +300,45 @@ namespace MechanicShop
                 }
             }
 
+            // Display the technician that did the most in terms of dollar value
+            if (rdBtn_bestTech.Checked)
+            {
+                string functionName = @"search_serviceHistory_byMaxDollarSum_retTech";
+
+
+                // Order by the sum of work cost in descending order and select only the top result
+                using (SqlCommand command = new SqlCommand($"SELECT TOP 1 * FROM {functionName}(@p_start_date, @p_end_date) " +
+                                                           $"ORDER BY total_cost DESC", connection))
+                {
+                    // Set SQL Parameters
+                    command.Parameters.Clear();
+
+                    SqlParameter p_startDate = new SqlParameter("@p_start_date", dateTimePicker8.Text);
+                    SqlParameter p_endDate = new SqlParameter("@p_end_date", dateTimePicker9.Text);
+
+
+                    // Add the parameters to the SqlCommand Object
+                    command.Parameters.Add(p_startDate);
+                    command.Parameters.Add(p_endDate);
+
+
+                    // Create new objects to execute the command
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+
+                    try
+                    {
+                        // Fill the data grid
+                        adapter.Fill(dataTable);
+                        dataGridView1.DataSource = dataTable;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }
+            }
+
         }
 
         private void btn_cancel_Click(object sender, EventArgs e)
