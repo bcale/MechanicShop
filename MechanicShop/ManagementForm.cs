@@ -204,6 +204,47 @@ namespace MechanicShop
                 }
             }
 
+            // This will not work if there are several customers with the same name; Need to search by ID not name
+            if (rdBtn_customer.Checked)
+            {
+                // Separate the name based on the space char
+                string fullName = cbBox_customers.Text;
+                string[] names = fullName.Split(' ');
+                string customer_Fname = names[0];
+                string customer_Lname = names[1];
+
+
+                string functionName = @"search_serviceHistory_byCustomer";
+
+                using (SqlCommand command = new SqlCommand($"SELECT * FROM {functionName}(@p_customer_Fname, @p_customer_Lname)", connection))
+                {
+
+                    // Set SQL Parameters
+                    command.Parameters.Clear();
+                    SqlParameter p_customer_Fname = new SqlParameter("@p_customer_Fname", customer_Fname);
+                    SqlParameter p_customer_Lname = new SqlParameter("@p_customer_Lname", customer_Lname);
+
+                    // Add the parameters to the SqlCommand Object
+                    command.Parameters.Add(p_customer_Fname);
+                    command.Parameters.Add(p_customer_Lname);
+
+                    // Create new objects to execute the command
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+
+                    try
+                    {
+                        // Fill the data grid
+                        adapter.Fill(dataTable);
+                        dataGridView1.DataSource = dataTable;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }
+            }
+
             if (rdBtn_cost_date.Checked)
             {
                 string functionName = @"dbo.[total_cost]";
