@@ -90,16 +90,12 @@ namespace MechanicShop
         private void btn_submit_Click(object sender, EventArgs e)
         {
             var checkedButton = Controls.OfType<RadioButton>().FirstOrDefault(radioButton => radioButton.Checked);
-
-            SearchResults SearchResults = new SearchResults(checkedButton);
-            SearchResults.Show();
             
             if (rdBtn_Date.Checked)
             {
                 string functionName = @"search_serviceHistory_byDate";
 
                 using (SqlCommand command = new SqlCommand($"SELECT * FROM {functionName}(@p_date) " +
-                                                           $"GROUP BY vehicle_license_plate" +
                                                            $"ORDER BY service_record_time", connection))
                 {
 
@@ -240,7 +236,7 @@ namespace MechanicShop
                 }
             }
 
-            //View Technician names who have done no work 
+            // View Technician names who have done no work 
             if (rdBtn_tech_noService.Checked)
             {
                 using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.Lazy_Technicians()", connection))
@@ -263,14 +259,11 @@ namespace MechanicShop
                 }
             }
 
-
         }
 
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             Close();
         }
-
-  
     }
 }
