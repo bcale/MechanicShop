@@ -60,30 +60,30 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(96, 52);
-            label1.Margin = new Padding(2, 0, 2, 0);
+            label1.Location = new Point(178, 111);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(0, 15);
+            label1.Size = new Size(0, 32);
             label1.TabIndex = 0;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(6, 10);
-            label2.Margin = new Padding(2, 0, 2, 0);
+            label2.Location = new Point(11, 21);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(165, 15);
+            label2.Size = new Size(336, 32);
             label2.TabIndex = 1;
             label2.Text = "Select Management Options";
             // 
             // rdBtn_Date
             // 
             rdBtn_Date.AutoSize = true;
-            rdBtn_Date.Location = new Point(6, 52);
-            rdBtn_Date.Margin = new Padding(2);
+            rdBtn_Date.Location = new Point(11, 111);
+            rdBtn_Date.Margin = new Padding(4, 4, 4, 4);
             rdBtn_Date.Name = "rdBtn_Date";
-            rdBtn_Date.Size = new Size(123, 19);
+            rdBtn_Date.Size = new Size(247, 36);
             rdBtn_Date.TabIndex = 2;
             rdBtn_Date.TabStop = true;
             rdBtn_Date.Text = "Data for Given Day";
@@ -91,10 +91,10 @@
             // 
             // btn_submit
             // 
-            btn_submit.Location = new Point(113, 314);
-            btn_submit.Margin = new Padding(2);
+            btn_submit.Location = new Point(210, 670);
+            btn_submit.Margin = new Padding(4, 4, 4, 4);
             btn_submit.Name = "btn_submit";
-            btn_submit.Size = new Size(80, 22);
+            btn_submit.Size = new Size(149, 47);
             btn_submit.TabIndex = 3;
             btn_submit.Text = "Submit";
             btn_submit.UseVisualStyleBackColor = true;
@@ -102,10 +102,10 @@
             // 
             // btn_cancel
             // 
-            btn_cancel.Location = new Point(16, 314);
-            btn_cancel.Margin = new Padding(2);
+            btn_cancel.Location = new Point(30, 670);
+            btn_cancel.Margin = new Padding(4, 4, 4, 4);
             btn_cancel.Name = "btn_cancel";
-            btn_cancel.Size = new Size(80, 22);
+            btn_cancel.Size = new Size(149, 47);
             btn_cancel.TabIndex = 4;
             btn_cancel.Text = "Cancel";
             btn_cancel.UseVisualStyleBackColor = true;
@@ -114,10 +114,10 @@
             // rdBtn_service_date
             // 
             rdBtn_service_date.AutoSize = true;
-            rdBtn_service_date.Location = new Point(6, 89);
-            rdBtn_service_date.Margin = new Padding(2);
+            rdBtn_service_date.Location = new Point(11, 190);
+            rdBtn_service_date.Margin = new Padding(4, 4, 4, 4);
             rdBtn_service_date.Name = "rdBtn_service_date";
-            rdBtn_service_date.Size = new Size(123, 19);
+            rdBtn_service_date.Size = new Size(245, 36);
             rdBtn_service_date.TabIndex = 5;
             rdBtn_service_date.TabStop = true;
             rdBtn_service_date.Text = "Number of Service";
@@ -126,10 +126,10 @@
             // rdBtn_cost_date
             // 
             rdBtn_cost_date.AutoSize = true;
-            rdBtn_cost_date.Location = new Point(6, 126);
-            rdBtn_cost_date.Margin = new Padding(2);
+            rdBtn_cost_date.Location = new Point(11, 269);
+            rdBtn_cost_date.Margin = new Padding(4, 4, 4, 4);
             rdBtn_cost_date.Name = "rdBtn_cost_date";
-            rdBtn_cost_date.Size = new Size(165, 19);
+            rdBtn_cost_date.Size = new Size(332, 36);
             rdBtn_cost_date.TabIndex = 6;
             rdBtn_cost_date.TabStop = true;
             rdBtn_cost_date.Text = "Total Service Cost Between";
@@ -138,94 +138,94 @@
             // dateTimePicker1
             // 
             dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(143, 52);
-            dateTimePicker1.Margin = new Padding(2);
+            dateTimePicker1.Location = new Point(266, 111);
+            dateTimePicker1.Margin = new Padding(4, 4, 4, 4);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(218, 23);
+            dateTimePicker1.Size = new Size(401, 39);
             dateTimePicker1.TabIndex = 7;
             // 
             // dateTimePicker2
             // 
             dateTimePicker2.Format = DateTimePickerFormat.Short;
-            dateTimePicker2.Location = new Point(191, 124);
-            dateTimePicker2.Margin = new Padding(2);
+            dateTimePicker2.Location = new Point(355, 265);
+            dateTimePicker2.Margin = new Padding(4, 4, 4, 4);
             dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(218, 23);
+            dateTimePicker2.Size = new Size(401, 39);
             dateTimePicker2.TabIndex = 8;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(415, 127);
-            label3.Margin = new Padding(2, 0, 2, 0);
+            label3.Location = new Point(771, 271);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(27, 15);
+            label3.Size = new Size(54, 32);
             label3.TabIndex = 9;
             label3.Text = "and";
             // 
             // dateTimePicker3
             // 
             dateTimePicker3.Format = DateTimePickerFormat.Short;
-            dateTimePicker3.Location = new Point(447, 124);
-            dateTimePicker3.Margin = new Padding(2);
+            dateTimePicker3.Location = new Point(830, 265);
+            dateTimePicker3.Margin = new Padding(4, 4, 4, 4);
             dateTimePicker3.Name = "dateTimePicker3";
-            dateTimePicker3.Size = new Size(218, 23);
+            dateTimePicker3.Size = new Size(401, 39);
             dateTimePicker3.TabIndex = 10;
             // 
             // cbBox_services
             // 
             cbBox_services.FormattingEnabled = true;
-            cbBox_services.Location = new Point(143, 89);
-            cbBox_services.Margin = new Padding(2);
+            cbBox_services.Location = new Point(266, 190);
+            cbBox_services.Margin = new Padding(4, 4, 4, 4);
             cbBox_services.Name = "cbBox_services";
-            cbBox_services.Size = new Size(132, 23);
+            cbBox_services.Size = new Size(242, 40);
             cbBox_services.TabIndex = 11;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(276, 91);
-            label4.Margin = new Padding(2, 0, 2, 0);
+            label4.Location = new Point(513, 194);
+            label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(111, 15);
+            label4.Size = new Size(226, 32);
             label4.TabIndex = 12;
             label4.Text = "performed between";
             // 
             // dateTimePicker4
             // 
             dateTimePicker4.Format = DateTimePickerFormat.Short;
-            dateTimePicker4.Location = new Point(401, 88);
-            dateTimePicker4.Margin = new Padding(2);
+            dateTimePicker4.Location = new Point(745, 188);
+            dateTimePicker4.Margin = new Padding(4, 4, 4, 4);
             dateTimePicker4.Name = "dateTimePicker4";
-            dateTimePicker4.Size = new Size(218, 23);
+            dateTimePicker4.Size = new Size(401, 39);
             dateTimePicker4.TabIndex = 13;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(625, 89);
-            label5.Margin = new Padding(2, 0, 2, 0);
+            label5.Location = new Point(1161, 190);
+            label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
-            label5.Size = new Size(27, 15);
+            label5.Size = new Size(54, 32);
             label5.TabIndex = 14;
             label5.Text = "and";
             // 
             // dateTimePicker5
             // 
             dateTimePicker5.Format = DateTimePickerFormat.Short;
-            dateTimePicker5.Location = new Point(657, 87);
-            dateTimePicker5.Margin = new Padding(2);
+            dateTimePicker5.Location = new Point(1220, 186);
+            dateTimePicker5.Margin = new Padding(4, 4, 4, 4);
             dateTimePicker5.Name = "dateTimePicker5";
-            dateTimePicker5.Size = new Size(218, 23);
+            dateTimePicker5.Size = new Size(401, 39);
             dateTimePicker5.TabIndex = 15;
             // 
             // rdBtn_technician_date
             // 
             rdBtn_technician_date.AutoSize = true;
-            rdBtn_technician_date.Location = new Point(6, 164);
-            rdBtn_technician_date.Margin = new Padding(2);
+            rdBtn_technician_date.Location = new Point(11, 350);
+            rdBtn_technician_date.Margin = new Padding(4, 4, 4, 4);
             rdBtn_technician_date.Name = "rdBtn_technician_date";
-            rdBtn_technician_date.Size = new Size(145, 19);
+            rdBtn_technician_date.Size = new Size(291, 36);
             rdBtn_technician_date.TabIndex = 16;
             rdBtn_technician_date.TabStop = true;
             rdBtn_technician_date.Text = "Services performed by ";
@@ -234,57 +234,57 @@
             // cbBox_technicians
             // 
             cbBox_technicians.FormattingEnabled = true;
-            cbBox_technicians.Location = new Point(166, 163);
-            cbBox_technicians.Margin = new Padding(2);
+            cbBox_technicians.Location = new Point(308, 348);
+            cbBox_technicians.Margin = new Padding(4, 4, 4, 4);
             cbBox_technicians.Name = "cbBox_technicians";
-            cbBox_technicians.Size = new Size(132, 23);
+            cbBox_technicians.Size = new Size(242, 40);
             cbBox_technicians.TabIndex = 17;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(306, 164);
-            label6.Margin = new Padding(2, 0, 2, 0);
+            label6.Location = new Point(568, 350);
+            label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
-            label6.Size = new Size(52, 15);
+            label6.Size = new Size(106, 32);
             label6.TabIndex = 18;
             label6.Text = "between";
             // 
             // dateTimePicker6
             // 
             dateTimePicker6.Format = DateTimePickerFormat.Short;
-            dateTimePicker6.Location = new Point(367, 162);
-            dateTimePicker6.Margin = new Padding(2);
+            dateTimePicker6.Location = new Point(682, 346);
+            dateTimePicker6.Margin = new Padding(4, 4, 4, 4);
             dateTimePicker6.Name = "dateTimePicker6";
-            dateTimePicker6.Size = new Size(218, 23);
+            dateTimePicker6.Size = new Size(401, 39);
             dateTimePicker6.TabIndex = 19;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(587, 164);
-            label7.Margin = new Padding(2, 0, 2, 0);
+            label7.Location = new Point(1090, 350);
+            label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
-            label7.Size = new Size(27, 15);
+            label7.Size = new Size(54, 32);
             label7.TabIndex = 20;
             label7.Text = "and";
             // 
             // dateTimePicker7
             // 
             dateTimePicker7.Format = DateTimePickerFormat.Short;
-            dateTimePicker7.Location = new Point(620, 162);
-            dateTimePicker7.Margin = new Padding(2);
+            dateTimePicker7.Location = new Point(1151, 346);
+            dateTimePicker7.Margin = new Padding(4, 4, 4, 4);
             dateTimePicker7.Name = "dateTimePicker7";
-            dateTimePicker7.Size = new Size(218, 23);
+            dateTimePicker7.Size = new Size(401, 39);
             dateTimePicker7.TabIndex = 21;
             // 
             // rdBtn_customer
             // 
             rdBtn_customer.AutoSize = true;
-            rdBtn_customer.Location = new Point(6, 200);
-            rdBtn_customer.Margin = new Padding(2);
+            rdBtn_customer.Location = new Point(11, 427);
+            rdBtn_customer.Margin = new Padding(4, 4, 4, 4);
             rdBtn_customer.Name = "rdBtn_customer";
-            rdBtn_customer.Size = new Size(259, 19);
+            rdBtn_customer.Size = new Size(517, 36);
             rdBtn_customer.TabIndex = 22;
             rdBtn_customer.TabStop = true;
             rdBtn_customer.Text = "Services Scheduled/Performed for Customer";
@@ -293,19 +293,19 @@
             // cbBox_customers
             // 
             cbBox_customers.FormattingEnabled = true;
-            cbBox_customers.Location = new Point(285, 197);
-            cbBox_customers.Margin = new Padding(2);
+            cbBox_customers.Location = new Point(529, 420);
+            cbBox_customers.Margin = new Padding(4, 4, 4, 4);
             cbBox_customers.Name = "cbBox_customers";
-            cbBox_customers.Size = new Size(132, 23);
+            cbBox_customers.Size = new Size(242, 40);
             cbBox_customers.TabIndex = 23;
             // 
             // rdBtn_tech_noService
             // 
             rdBtn_tech_noService.AutoSize = true;
-            rdBtn_tech_noService.Location = new Point(6, 238);
-            rdBtn_tech_noService.Margin = new Padding(2);
+            rdBtn_tech_noService.Location = new Point(11, 508);
+            rdBtn_tech_noService.Margin = new Padding(4, 4, 4, 4);
             rdBtn_tech_noService.Name = "rdBtn_tech_noService";
-            rdBtn_tech_noService.Size = new Size(279, 19);
+            rdBtn_tech_noService.Size = new Size(559, 36);
             rdBtn_tech_noService.TabIndex = 24;
             rdBtn_tech_noService.TabStop = true;
             rdBtn_tech_noService.Text = "Display Technicians with No Services Conducted";
@@ -314,16 +314,18 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(306, 255);
+            dataGridView1.Location = new Point(568, 544);
+            dataGridView1.Margin = new Padding(6, 6, 6, 6);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(538, 222);
+            dataGridView1.RowHeadersWidth = 82;
+            dataGridView1.Size = new Size(999, 474);
             dataGridView1.TabIndex = 25;
             // 
             // ManagementForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(907, 501);
+            ClientSize = new Size(1684, 1069);
             Controls.Add(dataGridView1);
             Controls.Add(rdBtn_tech_noService);
             Controls.Add(cbBox_customers);
@@ -350,7 +352,7 @@
             Controls.Add(rdBtn_Date);
             Controls.Add(label2);
             Controls.Add(label1);
-            Margin = new Padding(2);
+            Margin = new Padding(4, 4, 4, 4);
             Name = "ManagementForm";
             Text = "Service Management";
             Load += ManagementForm_Load;
